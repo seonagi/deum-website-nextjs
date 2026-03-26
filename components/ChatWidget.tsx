@@ -41,9 +41,6 @@ export default function ChatWidget() {
   const [isTyping, setIsTyping] = useState(false)
   const [isWaitingForAgent, setIsWaitingForAgent] = useState(false)
   const [waitMessage, setWaitMessage] = useState('')
-  const [countdown, setCountdown] = useState(0)
-  const [showTooltip, setShowTooltip] = useState(false)
-  const [hasShownIntro, setHasShownIntro] = useState(false)
   const [knowledge, setKnowledge] = useState<KnowledgeBase | null>(null)
   const [agent, setAgent] = useState<TeamMember | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -119,17 +116,6 @@ export default function ChatWidget() {
     "Thanks for waiting! Almost ready...",
   ]
   
-  // Show tooltip after 3 seconds
-  useEffect(() => {
-    if (!agent) return
-    const timer = setTimeout(() => {
-      setShowTooltip(true)
-      // Hide after 15 seconds
-      setTimeout(() => setShowTooltip(false), 15000)
-    }, 3000)
-    return () => clearTimeout(timer)
-  }, [agent])
-  
   // Auto-open after 10 seconds for first-time visitors (desktop only)
   useEffect(() => {
     const hasVisited = localStorage.getItem('deum-chat-visited')
@@ -137,10 +123,28 @@ export default function ChatWidget() {
     if (!hasVisited && knowledge && !isMobile) {
       const timer = setTimeout(() => {
         setIsOpen(true)
-        setShowTooltip(false) // Hide tooltip when opening
         
-        // Simulate agent connecting
-        showAgentIntro()
+        // Show waiting message
+        const randomWait = waitMessages[Math.floor(Math.random() * waitMessages.length)]
+        setWaitMessage(randomWait)
+        setIsWaitingForAgent(true)
+        
+        // After 5-15 second random delay, show greeting
+        const waitDelay = 5000 + Math.random() * 10000
+        setTimeout(() => {
+          setIsWaitingForAgent(false)
+          const greeting = getTimeBasedGreeting()
+          setMessages([{
+            id: '1',
+            text: greeting,
+            sender: 'agent',
+            timestamp: new Date()
+          }])
+          
+          // Track visit
+          const visitCount = parseInt(localStorage.getItem('deum_visit_count') || '0')
+          localStorage.setItem('deum_visit_count', (visitCount + 1).toString())
+        }, waitDelay)
         
         localStorage.setItem('deum-chat-visited', 'true')
       }, 10000)
@@ -152,53 +156,6 @@ export default function ChatWidget() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
-  
-  // Show agent intro with countdown
-  const showAgentIntro = async () => {
-    if (hasShownIntro) return
-    setHasShownIntro(true)
-    
-    // Show countdown: "Agent will be with you in Xs"
-    const waitTime = 5 + Math.floor(Math.random() * 4) // 5-8 seconds
-    setCountdown(waitTime)
-    setIsWaitingForAgent(true)
-    setWaitMessage(`${agent?.name || 'Our team'} is just finishing up with someone else`)
-    
-    // Countdown timer
-    let remaining = waitTime
-    const countdownInterval = setInterval(() => {
-      remaining--
-      setCountdown(remaining)
-      if (remaining <= 0) {
-        clearInterval(countdownInterval)
-      }
-    }, 1000)
-    
-    // After countdown, show typing indicator then greeting
-    setTimeout(async () => {
-      setIsWaitingForAgent(false)
-      setCountdown(0)
-      
-      const greeting = getTimeBasedGreeting()
-      
-      // Show typing indicator
-      setIsTyping(true)
-      await new Promise(resolve => setTimeout(resolve, greeting.length * 30)) // Slow typing
-      setIsTyping(false)
-      
-      // Add greeting message
-      setMessages([{
-        id: '1',
-        text: greeting,
-        sender: 'agent',
-        timestamp: new Date()
-      }])
-      
-      // Track visit
-      const visitCount = parseInt(localStorage.getItem('deum_visit_count') || '0')
-      localStorage.setItem('deum_visit_count', (visitCount + 1).toString())
-    }, waitTime * 1000)
-  }
   
   // Simulate typing with natural variation
   const simulateTyping = (responseLength: number = 100) => {
@@ -333,57 +290,26 @@ ${agent.can_escalate_to_founder ? `You work closely with Elliot (founder) and ca
 Remember: Short, warm, helpful responses. You're a real person helping a real customer.`
   }
   
-  // Show button even before knowledge loads
-  const displayAgent = agent || { name: 'Support', role: 'Support' }
+  if (!knowledge || !agent) return null
   
   return (
     <>
-      {/* Tooltip */}
-      {showTooltip && !isOpen && (
-        <div className="fixed bottom-24 right-6 z-[60] bg-white shadow-xl rounded-lg p-3 max-w-[240px] transition-all duration-300 animate-bounce-subtle">
-          <div className="flex items-start space-x-2">
-            <div className="flex-shrink-0 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white">
-              <MessageSquare className="w-4 h-4" />
-            </div>
-            <div className="flex-1">
-              <p className="text-xs font-medium text-gray-900 leading-snug">
-                {displayAgent.name} is here to answer your questions - just click the icon
-              </p>
-            </div>
-            <button
-              onClick={() => setShowTooltip(false)}
-              className="text-gray-400 hover:text-gray-600 flex-shrink-0"
-            >
-              <X className="w-3 h-3" />
-            </button>
-          </div>
-        </div>
+      {/* Chat Bubble */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+          aria-label="Open chat"
+        >
+          <MessageSquare className="w-6 h-6" />
+          <span className="absolute -bottom-8 right-0 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            Chat with {agent.name}
+          </span>
+        </button>
       )}
       
-      {/* Chat Bubble - ALWAYS SHOW FOR DEBUG */}
-      <button
-        onClick={() => {
-          setIsOpen(true)
-          setShowTooltip(false)
-          if (!hasShownIntro && knowledge && agent) showAgentIntro()
-        }}
-        className="fixed bottom-6 right-6 z-[9999] bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group relative"
-        aria-label="Open chat"
-        style={{ 
-          visibility: 'visible', 
-          display: isOpen ? 'none' : 'block',
-          pointerEvents: 'auto'
-        }}
-      >
-        <MessageSquare className="w-6 h-6" />
-        <span className="absolute top-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
-        <span className="absolute -bottom-8 right-0 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Chat with {displayAgent.name}
-        </span>
-      </button>
-      
       {/* Chat Window */}
-      {isOpen && knowledge && agent && (
+      {isOpen && (
         <div className={`fixed inset-0 md:inset-auto md:bottom-6 md:right-6 z-50 bg-white md:rounded-2xl shadow-2xl transition-all duration-300 ${
           isMinimized ? 'md:w-80 md:h-16' : 'md:w-96 md:h-[600px]'
         } ${isMinimized ? '' : 'w-full h-full md:max-w-[400px] md:max-h-[600px]'}`}>
@@ -426,18 +352,13 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
               <div className="flex-1 overflow-y-auto p-4 md:h-[460px] space-y-4">
                 {isWaitingForAgent && (
                   <div className="flex justify-center items-center h-full">
-                    <div className="text-center space-y-4">
+                    <div className="text-center">
                       <div className="flex justify-center space-x-2 mb-3">
                         <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                         <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                         <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
                       <p className="text-sm text-gray-600">{waitMessage}</p>
-                      {countdown > 0 && (
-                        <p className="text-sm font-medium text-orange-600">
-                          {agent?.name || 'Support'} will be with you in {countdown}s
-                        </p>
-                      )}
                     </div>
                   </div>
                 )}
@@ -487,7 +408,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                     placeholder="Ask about pricing, features..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-orange-500 text-sm text-gray-900 placeholder:text-gray-500"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-orange-500 text-sm"
                   />
                   <button
                     onClick={handleSend}
