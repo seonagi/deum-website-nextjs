@@ -42,6 +42,8 @@ export default function ChatWidget() {
   const [isWaitingForAgent, setIsWaitingForAgent] = useState(false)
   const [waitMessage, setWaitMessage] = useState('')
   const [showTooltip, setShowTooltip] = useState(false)
+  const [countdown, setCountdown] = useState(0)
+  const [hasShownIntro, setHasShownIntro] = useState(false)
   const [knowledge, setKnowledge] = useState<KnowledgeBase | null>(null)
   const [agent, setAgent] = useState<TeamMember | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -128,36 +130,63 @@ export default function ChatWidget() {
     return () => clearTimeout(timer)
   }, [agent])
   
+  // Show agent intro with countdown
+  const showAgentIntro = () => {
+    if (hasShownIntro) return
+    setHasShownIntro(true)
+    
+    // Show countdown: "Agent will be with you in Xs"
+    const waitTime = 5 + Math.floor(Math.random() * 4) // 5-8 seconds
+    setCountdown(waitTime)
+    setIsWaitingForAgent(true)
+    setWaitMessage(`${agent?.name || 'Our team'} is just finishing up with someone else`)
+    
+    // Countdown timer
+    let remaining = waitTime
+    const countdownInterval = setInterval(() => {
+      remaining--
+      setCountdown(remaining)
+      if (remaining <= 0) {
+        clearInterval(countdownInterval)
+      }
+    }, 1000)
+    
+    // After countdown, show typing indicator then greeting
+    setTimeout(() => {
+      setIsWaitingForAgent(false)
+      setCountdown(0)
+      
+      const greeting = getTimeBasedGreeting()
+      
+      // Show typing indicator
+      setIsTyping(true)
+      setTimeout(() => {
+        setIsTyping(false)
+        
+        // Add greeting message
+        setMessages([{
+          id: '1',
+          text: greeting,
+          sender: 'agent',
+          timestamp: new Date()
+        }])
+        
+        // Track visit
+        const visitCount = parseInt(localStorage.getItem('deum_visit_count') || '0')
+        localStorage.setItem('deum_visit_count', (visitCount + 1).toString())
+      }, greeting.length * 30) // Slow typing effect
+    }, waitTime * 1000)
+  }
+  
   // Auto-open after 10 seconds for first-time visitors (desktop only)
   useEffect(() => {
     const hasVisited = localStorage.getItem('deum-chat-visited')
     const isMobile = window.innerWidth < 768
-    if (!hasVisited && knowledge && !isMobile) {
+    if (!hasVisited && knowledge && agent && !isMobile) {
       const timer = setTimeout(() => {
         setIsOpen(true)
-        
-        // Show waiting message
-        const randomWait = waitMessages[Math.floor(Math.random() * waitMessages.length)]
-        setWaitMessage(randomWait)
-        setIsWaitingForAgent(true)
-        
-        // After 5-15 second random delay, show greeting
-        const waitDelay = 5000 + Math.random() * 10000
-        setTimeout(() => {
-          setIsWaitingForAgent(false)
-          const greeting = getTimeBasedGreeting()
-          setMessages([{
-            id: '1',
-            text: greeting,
-            sender: 'agent',
-            timestamp: new Date()
-          }])
-          
-          // Track visit
-          const visitCount = parseInt(localStorage.getItem('deum_visit_count') || '0')
-          localStorage.setItem('deum_visit_count', (visitCount + 1).toString())
-        }, waitDelay)
-        
+        setShowTooltip(false)
+        showAgentIntro()
         localStorage.setItem('deum-chat-visited', 'true')
       }, 10000)
       return () => clearTimeout(timer)
@@ -334,6 +363,9 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
           onClick={() => {
             setIsOpen(true)
             setShowTooltip(false)
+            if (!hasShownIntro && messages.length === 0) {
+              showAgentIntro()
+            }
           }}
           className="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
           aria-label="Open chat"
@@ -389,13 +421,18 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
               <div className="flex-1 overflow-y-auto p-4 md:h-[460px] space-y-4">
                 {isWaitingForAgent && (
                   <div className="flex justify-center items-center h-full">
-                    <div className="text-center">
+                    <div className="text-center space-y-4">
                       <div className="flex justify-center space-x-2 mb-3">
                         <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                         <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                         <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
                       <p className="text-sm text-gray-600">{waitMessage}</p>
+                      {countdown > 0 && (
+                        <p className="text-sm font-medium text-orange-600">
+                          {agent?.name || 'Support'} will be with you in {countdown}s
+                        </p>
+                      )}
                     </div>
                   </div>
                 )}
