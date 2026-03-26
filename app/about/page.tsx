@@ -145,7 +145,7 @@ export default function AboutPage() {
             <h3 className="text-2xl font-bold text-white mb-4">Questions? Feedback?</h3>
             <p className="text-lg text-[#A0A0A0] mb-6">
               I read every email. If you're struggling with the tool, have ideas for improvements, or just want to 
-              share your experience — I'd genuinely love to hear from you.
+              share your experience, I'd genuinely love to hear from you.
             </p>
             <a 
               href="mailto:elliot@deum.video" 
