@@ -48,13 +48,12 @@ export default function ChatWidget() {
   const [agent, setAgent] = useState<TeamMember | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   
-  // Load knowledge base
+  // Load knowledge base (don't assign agent yet)
   useEffect(() => {
     fetch('/data/deum-knowledge.json')
       .then(res => res.json())
       .then(data => {
         setKnowledge(data)
-        assignTeamMember(data)
       })
       .catch(err => console.error('Failed to load knowledge:', err))
   }, [])
@@ -117,22 +116,35 @@ export default function ChatWidget() {
   
   // Show agent assignment theater (triggered after user's first message)
   const showAgentAssignment = async (userQuestion: string) => {
-    if (hasShownIntro || !agent) return
+    if (hasShownIntro || !knowledge) return
     setHasShownIntro(true)
     
-    // Step 1: "Finding available agent..."
+    // Assign agent NOW (randomly)
+    if (!agent && knowledge.team?.enabled && knowledge.team?.members?.length) {
+      const randomIndex = Math.floor(Math.random() * knowledge.team.members.length)
+      const assigned = knowledge.team.members[randomIndex]
+      setAgent(assigned)
+    }
+    
+    // Wait for agent state to update
+    await new Promise(resolve => setTimeout(resolve, 100))
+    const currentAgent = agent || { name: 'Support', role: 'Support' }
+    
+    // Step 1: "Finding available agent..." (4-10s random)
+    const findWait = 4000 + Math.floor(Math.random() * 6000)
     setIsWaitingForAgent(true)
     setWaitMessage('Finding available agent...')
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    await new Promise(resolve => setTimeout(resolve, findWait))
     
-    // Step 2: "You've been assigned to [Name]"
-    setWaitMessage(`You've been assigned to ${agent.name}`)
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Step 2: "You've been assigned to [Name]" (4-10s random)
+    const assignWait = 4000 + Math.floor(Math.random() * 6000)
+    setWaitMessage(`You've been assigned to ${currentAgent.name}`)
+    await new Promise(resolve => setTimeout(resolve, assignWait))
     
     // Step 3: Countdown (9-25 seconds)
     const waitTime = 9 + Math.floor(Math.random() * 17) // 9-25 seconds
     setCountdown(waitTime)
-    setWaitMessage(`${agent.name} is helping another customer`)
+    setWaitMessage(`${currentAgent.name} is helping another customer`)
     
     let remaining = waitTime
     const countdownInterval = setInterval(() => {
@@ -148,8 +160,8 @@ export default function ChatWidget() {
       setIsWaitingForAgent(false)
       setCountdown(0)
       
-      // Agent introduction
-      const intro = `Hi, I'm ${agent.name} from ${agent.role} 👋`
+      // Agent introduction (no "welcome back")
+      const intro = `Hi, I'm ${currentAgent.name} from ${currentAgent.role} 👋`
       setIsTyping(true)
       await new Promise(resolve => setTimeout(resolve, intro.length * 40))
       setIsTyping(false)
@@ -315,7 +327,7 @@ ${agent.can_escalate_to_founder ? `You work closely with Elliot (founder) and ca
 Remember: Short, warm, helpful responses. You're a real person helping a real customer.`
   }
   
-  if (!knowledge || !agent) return null
+  if (!knowledge) return null
   
   return (
     <>
@@ -353,7 +365,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
         >
           <MessageSquare className="w-6 h-6" />
           <span className="absolute -bottom-8 right-0 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-            Chat with {agent.name}
+            Chat with our team
           </span>
         </button>
       )}
@@ -373,8 +385,8 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                 <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
               </div>
               <div>
-                <p className="font-semibold">{agent.name}</p>
-                <p className="text-xs opacity-90">{agent.role} • Online</p>
+                <p className="font-semibold">{agent ? agent.name : 'Our Team'}</p>
+                <p className="text-xs opacity-90">{agent ? `${agent.role} • Online` : 'Ready to help'}</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
@@ -414,6 +426,16 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                           {agent?.name || 'Support'} will be with you in {countdown}s
                         </p>
                       )}
+                    </div>
+                  </div>
+                )}
+                
+                {!isWaitingForAgent && messages.length === 0 && (
+                  <div className="flex justify-center items-center h-full">
+                    <div className="text-center px-6">
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        Send a message to our team and we'll try to respond as quickly as possible
+                      </p>
                     </div>
                   </div>
                 )}
