@@ -23,48 +23,136 @@ export default function AboutPage() {
       {/* About Content */}
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-xl md:text-3xl md:text-5xl font-bold text-white mb-6">About Deum</h1>
-          <p className="text-xl text-[#A0A0A0] mb-12">
-            We built Deum because video editing shouldn't be complicated.
-          </p>
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-12">The Story Behind Deum</h1>
 
-          <div className="prose prose-lg max-w-none">
-            <h2 className="text-xl md:text-3xl font-bold text-white mb-4">Our Mission</h2>
-            <p className="text-[#A0A0A0] mb-8">
-              Deum makes professional video editing accessible to everyone through AI-powered automation. 
-              No timeline. No learning curve. Just upload, process, and download.
-            </p>
-
-            <h2 className="text-xl md:text-3xl font-bold text-white mb-4">Why We're Different</h2>
-            <p className="text-[#A0A0A0] mb-4">
-              Most video editors are complex tools that require weeks to learn. Deum is different:
-            </p>
-            <ul className="list-disc list-inside text-[#A0A0A0] mb-8 space-y-2">
-              <li>10x faster than manual editing</li>
-              <li>97% accuracy in filler word detection</li>
-              <li>No software to install or learn</li>
-              <li>Professional audio polish included</li>
-              <li>Your videos stay private and secure</li>
-            </ul>
-
-            <h2 className="text-xl md:text-3xl font-bold text-white mb-4">Built for Creators</h2>
-            <p className="text-[#A0A0A0] mb-8">
-              Whether you're a YouTuber, podcaster, course creator, or business owner making marketing videos, 
-              Deum saves you hours every week. Focus on creating great content, not editing it.
-            </p>
-
-            <div className="bg-[#111111] p-8 rounded-2xl">
-              <h3 className="text-lg md:text-2xl font-bold text-white mb-4">Get in Touch</h3>
-              <p className="text-[#A0A0A0] mb-4">
-                Questions? Feedback? We'd love to hear from you.
-              </p>
-              <a 
-                href="mailto:hello@deum.video" 
-                className="inline-block px-6 py-3 bg-[#3B82F6] text-white rounded-lg font-medium hover:bg-[#2563EB] transition-colors"
-              >
-                Email us: hello@deum.video
-              </a>
+          {/* Founder Story */}
+          <div className="mb-16">
+            <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
+              {/* Placeholder for founder photo - can add later */}
+              <div className="w-full md:w-48 h-48 bg-[#111111] rounded-2xl flex items-center justify-center text-[#A0A0A0] text-sm flex-shrink-0">
+                <div className="text-center px-4">
+                  <div className="text-4xl mb-2">👋</div>
+                  <div>Elliot Rose</div>
+                  <div className="text-xs">Founder</div>
+                </div>
+              </div>
+              
+              <div className="flex-1">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Built by a Single Dad with ADHD</h2>
+                <div className="space-y-4 text-lg text-[#A0A0A0] leading-relaxed">
+                  <p>
+                    I'm Elliot — a single father of three, a qualified CBT therapist, and someone who lives with ADHD. 
+                    I built Deum because I was tired of getting lost in Descript for hours.
+                  </p>
+                  <p>
+                    You know that feeling? You sit down to quickly edit a video. "Just remove the ums and ahs," you think. 
+                    Two hours later, you're still clicking through waveforms, hyperfocused on making every cut perfect, 
+                    and your kids are wondering where you went.
+                  </p>
+                  <p>
+                    Complex editing tools like Descript aren't just time-consuming — they're <em>executive function black holes</em>. 
+                    Every decision drains you. Should I cut here or there? Is this pause too long? Did I miss one?
+                  </p>
+                  <p>
+                    As someone with ADHD, I needed something different. Something that wouldn't trap me. Something that 
+                    required <strong>one action</strong> — upload — and then got out of my way.
+                  </p>
+                  <p className="text-white font-medium">
+                    So I built it.
+                  </p>
+                </div>
+              </div>
             </div>
+
+            <div className="bg-[#111111] p-8 rounded-2xl space-y-4 text-lg text-[#A0A0A0]">
+              <p>
+                Deum was designed from day one for people like us — creators who don't have endless hours to spend 
+                in complex software. Single parents juggling work and kids. Neurodivergent creators who need tools 
+                that work <em>with</em> their brain, not against it.
+              </p>
+              <p>
+                No timelines. No endless decisions. No hyperfocus traps. Just upload your video and walk away. 
+                Ten minutes later, it's done.
+              </p>
+              <p className="text-white font-medium">
+                That's the whole point: get back to creating, not editing.
+              </p>
+            </div>
+          </div>
+
+          {/* Why We're Different */}
+          <div className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Why We're Different</h2>
+            <p className="text-lg text-[#A0A0A0] mb-6">
+              Most video editors are built for professionals with hours to spare. Deum is built for creators with lives to live.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-[#111111] p-6 rounded-xl">
+                <div className="text-2xl mb-3">⚡</div>
+                <h3 className="text-xl font-semibold text-white mb-2">10x Faster</h3>
+                <p className="text-[#A0A0A0]">
+                  What takes 90 minutes in Descript takes 10 minutes in Deum. Automatic processing means zero manual work.
+                </p>
+              </div>
+              
+              <div className="bg-[#111111] p-6 rounded-xl">
+                <div className="text-2xl mb-3">🎯</div>
+                <h3 className="text-xl font-semibold text-white mb-2">97% Accurate</h3>
+                <p className="text-[#A0A0A0]">
+                  Two-pass validation ensures we remove fillers without cutting real words. Professional results, zero effort.
+                </p>
+              </div>
+              
+              <div className="bg-[#111111] p-6 rounded-xl">
+                <div className="text-2xl mb-3">🧠</div>
+                <h3 className="text-xl font-semibold text-white mb-2">Zero Executive Function Drain</h3>
+                <p className="text-[#A0A0A0]">
+                  Upload and done. No timeline to navigate. No decisions to make. Perfect for ADHD creators.
+                </p>
+              </div>
+              
+              <div className="bg-[#111111] p-6 rounded-xl">
+                <div className="text-2xl mb-3">🔒</div>
+                <h3 className="text-xl font-semibold text-white mb-2">Your Videos Stay Private</h3>
+                <p className="text-[#A0A0A0]">
+                  Processed in isolated environments, automatically deleted after 24 hours. Never shared or used for training.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Who It's For */}
+          <div className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Who Deum Is For</h2>
+            <div className="space-y-4 text-lg text-[#A0A0A0]">
+              <p>
+                <strong className="text-white">YouTubers & Podcasters:</strong> Spend more time creating, less time clicking through waveforms.
+              </p>
+              <p>
+                <strong className="text-white">Course Creators:</strong> Professional polish without the professional learning curve.
+              </p>
+              <p>
+                <strong className="text-white">Business Owners:</strong> Marketing videos that don't eat your entire afternoon.
+              </p>
+              <p>
+                <strong className="text-white">ADHD/Neurodivergent Creators:</strong> Finally, a tool that doesn't trap you for hours.
+              </p>
+            </div>
+          </div>
+
+          {/* Get in Touch */}
+          <div className="bg-[#111111] p-8 rounded-2xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Questions? Feedback?</h3>
+            <p className="text-lg text-[#A0A0A0] mb-6">
+              I read every email. If you're struggling with the tool, have ideas for improvements, or just want to 
+              share your experience — I'd genuinely love to hear from you.
+            </p>
+            <a 
+              href="mailto:hello@deum.video" 
+              className="inline-block px-6 py-3 bg-[#3B82F6] text-white rounded-lg font-medium hover:bg-[#2563EB] transition-colors"
+            >
+              Email me: hello@deum.video
+            </a>
           </div>
         </div>
       </div>
@@ -74,7 +162,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="text-lg md:text-2xl font-bold mb-4">deum</div>
+              <div className="text-2xl font-bold mb-4">deum</div>
               <p className="text-gray-400 text-sm">Professional video editing,<br />minus the effort.</p>
             </div>
             <div>
