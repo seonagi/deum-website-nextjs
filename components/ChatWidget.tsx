@@ -105,14 +105,24 @@ export default function ChatWidget() {
     "Thanks for waiting! Almost ready...",
   ]
   
-  // Show tooltip after 3 seconds
+  // Show tooltip after 3 seconds, then every 2 minutes
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const showTooltipCycle = () => {
       setShowTooltip(true)
-      // Hide after 15 seconds
-      setTimeout(() => setShowTooltip(false), 15000)
-    }, 3000)
-    return () => clearTimeout(timer)
+      // Hide after 30 seconds
+      setTimeout(() => setShowTooltip(false), 30000)
+    }
+    
+    // First show after 3 seconds
+    const initialTimer = setTimeout(showTooltipCycle, 3000)
+    
+    // Then repeat every 2 minutes
+    const intervalTimer = setInterval(showTooltipCycle, 120000)
+    
+    return () => {
+      clearTimeout(initialTimer)
+      clearInterval(intervalTimer)
+    }
   }, [])
   
   // Show agent assignment theater (triggered after user's first message)
@@ -425,21 +435,21 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
     <>
       {/* Tooltip */}
       {showTooltip && !isOpen && (
-        <div className="fixed bottom-32 right-6 z-[60] bg-white shadow-xl rounded-lg p-3 max-w-[240px] transition-all duration-300 animate-bounce-subtle">
+        <div className="fixed bottom-36 right-6 z-[60] bg-white shadow-xl rounded-lg p-2 max-w-[200px] transition-all duration-300 animate-bounce-subtle">
           <div className="flex items-start space-x-2">
-            <div className="flex-shrink-0 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white">
-              <MessageSquare className="w-4 h-4" />
+            <div className="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white">
+              <MessageSquare className="w-3 h-3" />
             </div>
             <div className="flex-1">
-              <p className="text-xs font-medium text-gray-900 leading-snug">
-                Our team is here to answer your questions - just click the icon
+              <p className="text-[10px] font-medium text-gray-900 leading-tight">
+                Questions? Click to chat
               </p>
             </div>
             <button
               onClick={() => setShowTooltip(false)}
               className="text-gray-400 hover:text-gray-600 flex-shrink-0"
             >
-              <X className="w-3 h-3" />
+              <X className="w-2.5 h-2.5" />
             </button>
           </div>
         </div>
