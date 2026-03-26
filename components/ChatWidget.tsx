@@ -121,16 +121,16 @@ export default function ChatWidget() {
     if (hasShownIntro || !knowledge) return
     setHasShownIntro(true)
     
-    // Assign agent NOW (randomly)
-    if (!agent && knowledge.team?.enabled && knowledge.team?.members?.length) {
+    // Assign agent NOW (randomly) and store locally
+    let currentAgent: TeamMember
+    if (knowledge.team?.enabled && knowledge.team?.members?.length) {
       const randomIndex = Math.floor(Math.random() * knowledge.team.members.length)
-      const assigned = knowledge.team.members[randomIndex]
-      setAgent(assigned)
+      currentAgent = knowledge.team.members[randomIndex]
+      setAgent(currentAgent)
+    } else {
+      currentAgent = { id: 'default', name: 'Support', role: 'Support' }
+      setAgent(currentAgent)
     }
-    
-    // Wait for agent state to update
-    await new Promise(resolve => setTimeout(resolve, 100))
-    const currentAgent = agent || { name: 'Support', role: 'Support' }
     
     // Step 1: "Finding available agent..." (4-10s random)
     const findWait = 4000 + Math.floor(Math.random() * 6000)
@@ -429,7 +429,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
       
       {/* Chat Window */}
       {isOpen && (
-        <div className={`fixed inset-0 md:inset-auto md:bottom-6 md:right-6 z-50 bg-white md:rounded-2xl shadow-2xl transition-all duration-300 ${
+        <div className={`fixed inset-0 md:inset-auto md:bottom-8 md:right-6 z-50 bg-white md:rounded-2xl shadow-2xl transition-all duration-300 ${
           isMinimized ? 'md:w-80 md:h-16' : 'md:w-96 md:h-[600px]'
         } ${isMinimized ? '' : 'w-full h-full md:max-w-[400px] md:max-h-[600px]'}`}>
           {/* Header */}
@@ -552,7 +552,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                     <Send className="w-5 h-5" />
                   </button>
                 </div>
-                <p className="text-xs text-gray-500 mt-2 text-center">
+                <p className="text-xs text-gray-400 mt-2 text-center">
                   Typically replies in under 30 seconds
                 </p>
               </div>
