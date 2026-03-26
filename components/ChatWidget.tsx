@@ -408,7 +408,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                     placeholder="Ask about pricing, features..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-orange-500 text-sm"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-orange-500 text-sm text-gray-900 placeholder:text-gray-500"
                   />
                   <button
                     onClick={handleSend}
