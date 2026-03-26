@@ -435,7 +435,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
     <>
       {/* Tooltip */}
       {showTooltip && !isOpen && (
-        <div className="fixed bottom-36 right-6 z-[60] bg-white shadow-xl rounded-lg p-2.5 max-w-[220px] transition-all duration-300 animate-bounce-subtle">
+        <div className="fixed bottom-36 right-6 z-[60] bg-white shadow-xl rounded-lg p-2.5 max-w-[220px] animate-drop-bounce">
           <div className="flex items-start space-x-2">
             <div className="flex-shrink-0 w-7 h-7 bg-orange-500 rounded-full flex items-center justify-center text-white">
               <MessageSquare className="w-3.5 h-3.5" />
