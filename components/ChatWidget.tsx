@@ -41,6 +41,7 @@ export default function ChatWidget() {
   const [isTyping, setIsTyping] = useState(false)
   const [isWaitingForAgent, setIsWaitingForAgent] = useState(false)
   const [waitMessage, setWaitMessage] = useState('')
+  const [showTooltip, setShowTooltip] = useState(false)
   const [knowledge, setKnowledge] = useState<KnowledgeBase | null>(null)
   const [agent, setAgent] = useState<TeamMember | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -115,6 +116,17 @@ export default function ChatWidget() {
     `${agent?.name || 'Support'} will be right with you...`,
     "Thanks for waiting! Almost ready...",
   ]
+  
+  // Show tooltip after 3 seconds
+  useEffect(() => {
+    if (!agent) return
+    const timer = setTimeout(() => {
+      setShowTooltip(true)
+      // Hide after 15 seconds
+      setTimeout(() => setShowTooltip(false), 15000)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [agent])
   
   // Auto-open after 10 seconds for first-time visitors (desktop only)
   useEffect(() => {
@@ -294,10 +306,35 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
   
   return (
     <>
+      {/* Tooltip */}
+      {showTooltip && !isOpen && (
+        <div className="fixed bottom-24 right-6 z-[60] bg-white shadow-xl rounded-lg p-3 max-w-[240px] transition-all duration-300 animate-bounce-subtle">
+          <div className="flex items-start space-x-2">
+            <div className="flex-shrink-0 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white">
+              <MessageSquare className="w-4 h-4" />
+            </div>
+            <div className="flex-1">
+              <p className="text-xs font-medium text-gray-900 leading-snug">
+                {agent.name} is here to answer your questions - just click the icon
+              </p>
+            </div>
+            <button
+              onClick={() => setShowTooltip(false)}
+              className="text-gray-400 hover:text-gray-600 flex-shrink-0"
+            >
+              <X className="w-3 h-3" />
+            </button>
+          </div>
+        </div>
+      )}
+      
       {/* Chat Bubble */}
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setIsOpen(true)
+            setShowTooltip(false)
+          }}
           className="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
           aria-label="Open chat"
         >
