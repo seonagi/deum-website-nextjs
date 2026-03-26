@@ -121,15 +121,13 @@ export default function ChatWidget() {
     if (hasShownIntro || !knowledge) return
     setHasShownIntro(true)
     
-    // Assign agent NOW (randomly) and store locally
+    // Pick agent (randomly) but don't show in header yet
     let currentAgent: TeamMember
     if (knowledge.team?.enabled && knowledge.team?.members?.length) {
       const randomIndex = Math.floor(Math.random() * knowledge.team.members.length)
       currentAgent = knowledge.team.members[randomIndex]
-      setAgent(currentAgent)
     } else {
       currentAgent = { id: 'default', name: 'Support', role: 'Support' }
-      setAgent(currentAgent)
     }
     
     // Step 1: "Finding available agent..." (4-10s random)
@@ -139,6 +137,8 @@ export default function ChatWidget() {
     await new Promise(resolve => setTimeout(resolve, findWait))
     
     // Step 2: "You've been assigned to [Name]" (4-10s random)
+    // NOW set the agent in state so header updates
+    setAgent(currentAgent)
     const assignWait = 4000 + Math.floor(Math.random() * 6000)
     setWaitMessage(`You've been assigned to ${currentAgent.name}`)
     await new Promise(resolve => setTimeout(resolve, assignWait))
