@@ -17,6 +17,9 @@ export default function Home() {
               <a href="#pricing" className="text-sm text-[#A0A0A0] hover:text-white transition-colors">
                 Pricing
               </a>
+              <Link href="/about" className="text-sm text-[#A0A0A0] hover:text-white transition-colors">
+                About
+              </Link>
               <a
                 href="https://app.deum.video/sign-in"
                 className="px-4 py-2 text-sm border border-[#1F1F1F] rounded-lg text-[#A0A0A0] hover:border-[#3B82F6] hover:text-white transition-colors"
