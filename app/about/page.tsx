@@ -33,19 +33,15 @@ export default function AboutPage() {
             {/* Newspaper-style layout with image float */}
             <div className="space-y-4 text-lg text-[#A0A0A0] leading-relaxed">
               {/* Founder photo - floats left on desktop, full width on mobile */}
-              <div className="w-full md:w-80 md:float-left md:mr-8 mb-6 relative rounded-2xl overflow-hidden">
+              <div className="w-full md:w-80 md:float-left md:mr-8 mb-6 rounded-2xl overflow-hidden">
                 <Image 
-                  src="/images/elliot-founder.jpg" 
-                  alt="Elliot Rose, Founder of Deum" 
+                  src="/images/elliot-founder-labeled.jpg" 
+                  alt="Founder of Deum" 
                   width={320}
                   height={320}
                   className="object-cover w-full"
                   sizes="(max-width: 768px) 100vw, 320px"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm text-white text-xs py-2 px-3">
-                  <div>Elliot Rose</div>
-                  <div className="opacity-70">Founder of Deum</div>
-                </div>
               </div>
 
               <p>
