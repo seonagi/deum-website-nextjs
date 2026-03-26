@@ -245,14 +245,15 @@ export default function ChatWidget() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
   
-  // Simulate typing with natural variation
+  // Simulate typing with realistic human speed
   const simulateTyping = (responseLength: number = 100) => {
-    const wordsPerMinute = 40
-    const avgWordLength = 5
-    const words = responseLength / avgWordLength
-    const baseTime = (words / wordsPerMinute) * 60 * 1000
-    const variation = 0.4 * Math.random() - 0.2
-    const duration = Math.max(1000, Math.min(baseTime * (1 + variation), 4000))
+    // Average typing: 40 WPM = 200 chars/min = 3.3 chars/sec
+    // Add 5-10% random variation per message
+    const baseSpeed = 3.3 // chars per second
+    const charsPerMs = baseSpeed / 1000
+    const baseTime = responseLength / charsPerMs
+    const variation = 0.05 + (Math.random() * 0.05) // 5-10% slower
+    const duration = Math.max(1500, Math.min(baseTime * (1 + variation), 8000))
     
     setIsTyping(true)
     return new Promise(resolve => {
@@ -311,8 +312,18 @@ export default function ChatWidget() {
       const data = await response.json()
       const reply = data.message || data.content || "Sorry, I had trouble responding. Please try again!"
       
-      await simulateTyping(reply.length)
-      addMessage(reply, 'agent')
+      // Split into multiple messages if AI used line breaks (more human)
+      const replyMessages = reply.split('\n').filter((m: string) => m.trim().length > 0)
+      
+      for (const msg of replyMessages) {
+        await simulateTyping(msg.length)
+        addMessage(msg, 'agent')
+        
+        // Small pause between messages (like a human thinking/typing next bit)
+        if (replyMessages.indexOf(msg) < replyMessages.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 400))
+        }
+      }
       
       // Start inactivity timer after agent responds
       startInactivityTimer()
@@ -342,10 +353,21 @@ ${agent.phrases?.length ? `Signature phrases: ${agent.phrases.join(', ')}` : ''}
 
 IMPORTANT RULES:
 1. You're a real team member, not an AI chatbot
-2. Keep responses SHORT (1-3 sentences unless details needed)
-3. Be warm, conversational, natural - like texting a coworker
-4. Answer basic questions (pricing, features, how it works) yourself
-5. For complex custom requests, direct to founder: support@deum.video
+2. Write like a HUMAN TEXTING - split thoughts across multiple short messages
+3. Use casual language, contractions (it's, you'll, we've)
+4. NEVER write in perfectly formatted paragraphs - humans don't do that in chat
+5. Break up longer explanations into 2-3 separate messages
+6. Occasional typos are OK (you're human and typing fast)
+7. Answer basic questions yourself, complex → support@deum.video
+
+RESPONSE FORMAT EXAMPLES:
+Bad (too formal/long):
+"Deum is an AI video editor that automatically removes filler words like um, uh, and like from your videos. It's faster than Descript and maintains natural speech flow with 97% accuracy."
+
+Good (natural, split messages):
+"oh deum is basically like descript but way faster"
+"you upload your video and the AI strips out all the ums, uhs, likes... all that stuff"
+"takes about 10 mins vs hours with descript"
 
 COMPANY: ${k.company.name} - ${k.company.tagline}
 Website: ${k.company.website}
