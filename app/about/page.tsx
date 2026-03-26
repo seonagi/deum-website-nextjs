@@ -32,33 +32,34 @@ export default function AboutPage() {
               <div className="w-full md:w-48 h-48 bg-[#111111] rounded-2xl flex items-center justify-center text-[#A0A0A0] text-sm flex-shrink-0">
                 <div className="text-center px-4">
                   <div className="text-4xl mb-2">👋</div>
-                  <div>Elliot Rose</div>
-                  <div className="text-xs">Founder</div>
+                  <div className="text-xs">Elliot Rose</div>
+                  <div className="text-xs opacity-60">Founder of Deum</div>
                 </div>
               </div>
               
               <div className="flex-1">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Built by a Single Dad with ADHD</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Why I Built Deum</h2>
                 <div className="space-y-4 text-lg text-[#A0A0A0] leading-relaxed">
                   <p>
-                    I'm Elliot — a single father of three, a qualified CBT therapist, and someone who lives with ADHD. 
-                    I built Deum because I was tired of getting lost in Descript for hours.
+                    Deum started with a simple frustration: editing a short video shouldn't take hours.
                   </p>
                   <p>
-                    You know that feeling? You sit down to quickly edit a video. "Just remove the ums and ahs," you think. 
-                    Two hours later, you're still clicking through waveforms, hyperfocused on making every cut perfect, 
-                    and your kids are wondering where you went.
+                    Between work and family life, I needed something that didn't clash with my ADHD. Something fast, simple, and that didn't demand constant decisions.
                   </p>
                   <p>
-                    Complex editing tools like Descript aren't just time-consuming — they're <em>executive function black holes</em>. 
-                    Every decision drains you. Should I cut here or there? Is this pause too long? Did I miss one?
+                    For me, what starts as a "quick edit" easily turns into hours of tweaking. Small decisions stack up. Before you know it, you're deep in the weeds trying to get everything just right.
                   </p>
                   <p>
-                    As someone with ADHD, I needed something different. Something that wouldn't trap me. Something that 
-                    required <strong>one action</strong> — upload — and then got out of my way.
+                    It's not just the time, it's the mental load. Too many choices. Visual distractions. Second-guessing every cut. Losing track of where you were. It adds up fast.
+                  </p>
+                  <p>
+                    Tools like Descript are powerful, but they come with a learning curve and can be overwhelming when focus and time are already limited.
+                  </p>
+                  <p>
+                    I wanted something simpler. Something that removes the friction instead of adding to it.
                   </p>
                   <p className="text-white font-medium">
-                    So I built it.
+                    So I built Deum, a tool that does the work for you, so you can get back to what matters.
                   </p>
                 </div>
               </div>
@@ -66,13 +67,10 @@ export default function AboutPage() {
 
             <div className="bg-[#111111] p-8 rounded-2xl space-y-4 text-lg text-[#A0A0A0]">
               <p>
-                Deum was designed from day one for people like us — creators who don't have endless hours to spend 
-                in complex software. Single parents juggling work and kids. Neurodivergent creators who need tools 
-                that work <em>with</em> their brain, not against it.
+                Deum was designed for people who don't have endless hours to spend in complex software. Single parents juggling work and kids. Neurodivergent creators who need tools that work with their brain, not against it.
               </p>
               <p>
-                No timelines. No endless decisions. No hyperfocus traps. Just upload your video and walk away. 
-                Ten minutes later, it's done.
+                No timelines. No endless decisions. No hyperfocus traps. Just upload your video and walk away. Ten minutes later, it's done.
               </p>
               <p className="text-white font-medium">
                 That's the whole point: get back to creating, not editing.
