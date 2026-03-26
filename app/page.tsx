@@ -91,7 +91,7 @@ export default function Home() {
       <section id="demo" className="py-20 px-6 bg-[#111111]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-sm text-gray-500 uppercase tracking-wider">See the difference</span>
+            <span className="text-sm text-gray-500 uppercase tracking-wider">See the difference, Hear the difference</span>
             <h2 className="text-xl md:text-2xl md:text-4xl font-bold text-white mt-2">Before & After</h2>
           </div>
           
