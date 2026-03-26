@@ -67,10 +67,10 @@ export default function AboutPage() {
 
             <div className="bg-[#111111] p-8 rounded-2xl space-y-4 text-lg text-[#A0A0A0]">
               <p>
-                Deum was designed for people who don't have endless hours to spend in complex software. Single parents juggling work and kids. Neurodivergent creators who need tools that work with their brain, not against it.
+                Deum was designed for creators who don't have hours to lose in complex software. People balancing work, life, and everything in between. Neurodivergent creators who need tools that work with their brain, not against it.
               </p>
               <p>
-                No timelines. No endless decisions. No hyperfocus traps. Just upload your video and walk away. Ten minutes later, it's done.
+                No timelines. No endless decisions. No getting lost in the process. Just upload your video and walk away. Ten minutes later, it's done.
               </p>
               <p className="text-white font-medium">
                 That's the whole point: get back to creating, not editing.
