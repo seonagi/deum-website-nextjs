@@ -340,21 +340,21 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
     <>
       {/* Tooltip */}
       {showTooltip && !isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 bg-white shadow-xl rounded-xl p-4 max-w-xs transition-all duration-300">
-          <div className="flex items-start space-x-3">
-            <div className="flex-shrink-0 w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white">
-              <MessageSquare className="w-5 h-5" />
+        <div className="fixed bottom-24 right-6 z-[60] bg-white shadow-xl rounded-lg p-3 max-w-[240px] transition-all duration-300 animate-bounce-subtle">
+          <div className="flex items-start space-x-2">
+            <div className="flex-shrink-0 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white">
+              <MessageSquare className="w-4 h-4" />
             </div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-gray-900">
+              <p className="text-xs font-medium text-gray-900 leading-snug">
                 {displayAgent.name} is here to answer your questions - just click the icon
               </p>
             </div>
             <button
               onClick={() => setShowTooltip(false)}
-              className="text-gray-400 hover:text-gray-600"
+              className="text-gray-400 hover:text-gray-600 flex-shrink-0"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3 h-3" />
             </button>
           </div>
         </div>
