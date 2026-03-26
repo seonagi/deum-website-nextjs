@@ -9,7 +9,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 bg-[#0A0A0A]/80 backdrop-blur-sm z-40 border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-white">deum</div>
+            <div className="text-xl md:text-2xl font-bold text-white">deum</div>
             <div className="flex items-center gap-8">
               <a href="#how" className="text-[#A0A0A0] hover:text-white transition-colors">
                 How it works
@@ -31,7 +31,7 @@ export default function Home() {
       {/* Hero */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-6xl font-bold text-white mb-6">
+          <h1 className="text-xl md:text-2xl md:text-4xl md:text-6xl font-bold text-white mb-6">
             Video editing on autopilot.
           </h1>
           <p className="text-xl text-[#A0A0A0] mb-10 max-w-2xl mx-auto">
@@ -53,15 +53,15 @@ export default function Home() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-12 max-w-3xl mx-auto">
             <div>
-              <div className="text-5xl font-bold text-white">10x</div>
+              <div className="text-3xl md:text-5xl font-bold text-white">10x</div>
               <div className="text-sm text-[#A0A0A0] mt-2">Faster than manual editing</div>
             </div>
             <div>
-              <div className="text-5xl font-bold text-white">97%</div>
+              <div className="text-3xl md:text-5xl font-bold text-white">97%</div>
               <div className="text-sm text-[#A0A0A0] mt-2">Accuracy rate</div>
             </div>
             <div>
-              <div className="text-5xl font-bold text-white">10min</div>
+              <div className="text-3xl md:text-5xl font-bold text-white">10min</div>
               <div className="text-sm text-[#A0A0A0] mt-2">Average render</div>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm text-gray-500 uppercase tracking-wider">See the difference</span>
-            <h2 className="text-4xl font-bold text-white mt-2">Before & After</h2>
+            <h2 className="text-xl md:text-2xl md:text-4xl font-bold text-white mt-2">Before & After</h2>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 items-center">
@@ -93,7 +93,7 @@ export default function Home() {
             </div>
 
             {/* Arrow */}
-            <div className="text-center text-4xl text-gray-400">→</div>
+            <div className="text-center text-xl md:text-2xl md:text-4xl text-gray-400">→</div>
 
             {/* After */}
             <div className="bg-[#0A0A0A] p-8 rounded-2xl shadow-sm">
@@ -118,23 +118,23 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-sm text-gray-500 uppercase tracking-wider">Three steps</span>
-            <h2 className="text-4xl font-bold text-white mt-2">Simpler than hiring an editor</h2>
+            <h2 className="text-xl md:text-2xl md:text-4xl font-bold text-white mt-2">Simpler than hiring an editor</h2>
           </div>
           
           <div className="grid md:grid-cols-3 gap-12">
             <div>
-              <div className="text-5xl font-bold text-gray-200 mb-4">01</div>
-              <h3 className="text-2xl font-bold text-white mb-2">Upload</h3>
+              <div className="text-3xl md:text-5xl font-bold text-gray-200 mb-4">01</div>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Upload</h3>
               <p className="text-[#A0A0A0]">Drag and drop your video. MP4, MOV, or AVI. Up to 4K quality.</p>
             </div>
             <div>
-              <div className="text-5xl font-bold text-gray-200 mb-4">02</div>
-              <h3 className="text-2xl font-bold text-white mb-2">Process</h3>
+              <div className="text-3xl md:text-5xl font-bold text-gray-200 mb-4">02</div>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Process</h3>
               <p className="text-[#A0A0A0]">AI identifies and removes every filler. Audio polish included.</p>
             </div>
             <div>
-              <div className="text-5xl font-bold text-gray-200 mb-4">03</div>
-              <h3 className="text-2xl font-bold text-white mb-2">Download</h3>
+              <div className="text-3xl md:text-5xl font-bold text-gray-200 mb-4">03</div>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Download</h3>
               <p className="text-[#A0A0A0]">Grab your polished video. Original quality. Professional sound.</p>
             </div>
           </div>
@@ -173,7 +173,7 @@ export default function Home() {
       {/* CTA */}
       <section className="py-20 px-6 bg-[#111111]">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to sound professional?</h2>
+          <h2 className="text-xl md:text-2xl md:text-4xl font-bold text-white mb-4">Ready to sound professional?</h2>
           <p className="text-lg text-[#A0A0A0] mb-8">Try your first video free. No credit card required.</p>
           <a
             href="https://app.deum.video/sign-up"
@@ -187,7 +187,7 @@ export default function Home() {
       {/* Testimonials */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-12 text-center">What Users Say</h2>
+          <h2 className="text-xl md:text-2xl md:text-4xl font-bold text-white mb-12 text-center">What Users Say</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
               <div className="flex items-center gap-2 mb-4">
@@ -219,7 +219,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="text-2xl font-bold mb-4">deum</div>
+              <div className="text-xl md:text-2xl font-bold mb-4">deum</div>
               <p className="text-gray-400 text-sm">Professional video editing,<br />minus the effort.</p>
             </div>
             <div>

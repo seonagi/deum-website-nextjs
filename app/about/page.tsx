@@ -8,7 +8,7 @@ export default function AboutPage() {
       <nav className="fixed top-0 left-0 right-0 bg-[#0A0A0A]/80 backdrop-blur-sm z-40 border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-white">deum</Link>
+            <Link href="/" className="text-lg md:text-2xl font-bold text-white">deum</Link>
             <div className="flex items-center gap-8">
               <Link href="/#how" className="text-[#A0A0A0] hover:text-white transition-colors">How it works</Link>
               <Link href="/#pricing" className="text-[#A0A0A0] hover:text-white transition-colors">Pricing</Link>
@@ -23,19 +23,19 @@ export default function AboutPage() {
       {/* About Content */}
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl font-bold text-white mb-6">About Deum</h1>
+          <h1 className="text-xl md:text-3xl md:text-5xl font-bold text-white mb-6">About Deum</h1>
           <p className="text-xl text-[#A0A0A0] mb-12">
             We built Deum because video editing shouldn't be complicated.
           </p>
 
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Mission</h2>
+            <h2 className="text-xl md:text-3xl font-bold text-white mb-4">Our Mission</h2>
             <p className="text-[#A0A0A0] mb-8">
               Deum makes professional video editing accessible to everyone through AI-powered automation. 
               No timeline. No learning curve. Just upload, process, and download.
             </p>
 
-            <h2 className="text-3xl font-bold text-white mb-4">Why We're Different</h2>
+            <h2 className="text-xl md:text-3xl font-bold text-white mb-4">Why We're Different</h2>
             <p className="text-[#A0A0A0] mb-4">
               Most video editors are complex tools that require weeks to learn. Deum is different:
             </p>
@@ -47,14 +47,14 @@ export default function AboutPage() {
               <li>Your videos stay private and secure</li>
             </ul>
 
-            <h2 className="text-3xl font-bold text-white mb-4">Built for Creators</h2>
+            <h2 className="text-xl md:text-3xl font-bold text-white mb-4">Built for Creators</h2>
             <p className="text-[#A0A0A0] mb-8">
               Whether you're a YouTuber, podcaster, course creator, or business owner making marketing videos, 
               Deum saves you hours every week. Focus on creating great content, not editing it.
             </p>
 
             <div className="bg-[#111111] p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-white mb-4">Get in Touch</h3>
+              <h3 className="text-lg md:text-2xl font-bold text-white mb-4">Get in Touch</h3>
               <p className="text-[#A0A0A0] mb-4">
                 Questions? Feedback? We'd love to hear from you.
               </p>
@@ -74,7 +74,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="text-2xl font-bold mb-4">deum</div>
+              <div className="text-lg md:text-2xl font-bold mb-4">deum</div>
               <p className="text-gray-400 text-sm">Professional video editing,<br />minus the effort.</p>
             </div>
             <div>

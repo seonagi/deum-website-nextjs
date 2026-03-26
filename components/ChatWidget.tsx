@@ -116,10 +116,11 @@ export default function ChatWidget() {
     "Thanks for waiting! Almost ready...",
   ]
   
-  // Auto-open after 10 seconds for first-time visitors
+  // Auto-open after 10 seconds for first-time visitors (desktop only)
   useEffect(() => {
     const hasVisited = localStorage.getItem('deum-chat-visited')
-    if (!hasVisited && knowledge) {
+    const isMobile = window.innerWidth < 768
+    if (!hasVisited && knowledge && !isMobile) {
       const timer = setTimeout(() => {
         setIsOpen(true)
         
@@ -300,11 +301,11 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
       
       {/* Chat Window */}
       {isOpen && (
-        <div className={`fixed bottom-6 right-6 z-50 bg-white rounded-2xl shadow-2xl transition-all duration-300 ${
-          isMinimized ? 'w-80 h-16' : 'w-96 h-[600px]'
-        }`}>
+        <div className={`fixed inset-0 md:inset-auto md:bottom-6 md:right-6 z-50 bg-white md:rounded-2xl shadow-2xl transition-all duration-300 ${
+          isMinimized ? 'md:w-80 md:h-16' : 'md:w-96 md:h-[600px]'
+        } ${isMinimized ? '' : 'w-full h-full md:max-w-[400px] md:max-h-[600px]'}`}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 md:rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -339,7 +340,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
           {/* Messages */}
           {!isMinimized && (
             <>
-              <div className="flex-1 overflow-y-auto p-4 h-[460px] space-y-4">
+              <div className="flex-1 overflow-y-auto p-4 md:h-[460px] space-y-4">
                 {isWaitingForAgent && (
                   <div className="flex justify-center items-center h-full">
                     <div className="text-center">

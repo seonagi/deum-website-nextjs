@@ -8,7 +8,7 @@ export default function BlogPage() {
       <nav className="fixed top-0 left-0 right-0 bg-[#0A0A0A]/80 backdrop-blur-sm z-40 border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-white">deum</Link>
+            <Link href="/" className="text-lg md:text-2xl font-bold text-white">deum</Link>
             <div className="flex items-center gap-8">
               <Link href="/#how" className="text-[#A0A0A0] hover:text-white transition-colors">How it works</Link>
               <Link href="/#pricing" className="text-[#A0A0A0] hover:text-white transition-colors">Pricing</Link>
@@ -24,13 +24,13 @@ export default function BlogPage() {
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-white mb-4">Blog</h1>
+            <h1 className="text-xl md:text-3xl md:text-5xl font-bold text-white mb-4">Blog</h1>
             <p className="text-xl text-[#A0A0A0]">Tips, guides, and insights for video creators</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F] hover:border-[#1F1F1F] transition-colors">
-              <h2 className="text-2xl font-bold text-white mb-3">Coming Soon</h2>
+              <h2 className="text-lg md:text-2xl font-bold text-white mb-3">Coming Soon</h2>
               <p className="text-[#A0A0A0] mb-4">
                 We're working on bringing you helpful content about video creation, editing tips, and best practices.
               </p>
@@ -45,7 +45,7 @@ export default function BlogPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="text-2xl font-bold mb-4">deum</div>
+              <div className="text-lg md:text-2xl font-bold mb-4">deum</div>
               <p className="text-gray-400 text-sm">Professional video editing,<br />minus the effort.</p>
             </div>
             <div>

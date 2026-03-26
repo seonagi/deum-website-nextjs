@@ -10,7 +10,7 @@ export default function PricingSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <span className="text-sm text-[#A0A0A0] uppercase tracking-wider">Simple pricing</span>
-          <h2 className="text-4xl font-bold text-white mt-2">One price. No surprises.</h2>
+          <h2 className="text-xl md:text-2xl md:text-4xl font-bold text-white mt-2">One price. No surprises.</h2>
         </div>
 
         {/* Annual/Monthly Toggle */}
@@ -40,8 +40,8 @@ export default function PricingSection() {
         <div className="grid md:grid-cols-4 gap-6">
           {/* Free */}
           <div className="bg-[#111111] p-8 rounded-2xl border border-[#1F1F1F]">
-            <h3 className="text-2xl font-bold text-white">Free</h3>
-            <div className="text-4xl font-bold text-white my-4">$0</div>
+            <h3 className="text-xl md:text-2xl font-bold text-white">Free</h3>
+            <div className="text-xl md:text-2xl md:text-4xl font-bold text-white my-4">$0</div>
             <ul className="space-y-3 mb-8">
               <li className="text-sm text-[#A0A0A0]">1 hour per month</li>
               <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
@@ -58,8 +58,8 @@ export default function PricingSection() {
             {isAnnual && (
               <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save 25%</div>
             )}
-            <h3 className="text-2xl font-bold text-white">Hobby</h3>
-            <div className="text-4xl font-bold text-white my-4">
+            <h3 className="text-xl md:text-2xl font-bold text-white">Hobby</h3>
+            <div className="text-xl md:text-2xl md:text-4xl font-bold text-white my-4">
               ${isAnnual ? '15' : '20'}
               <span className="text-lg text-[#A0A0A0]">/mo</span>
             </div>
@@ -84,8 +84,8 @@ export default function PricingSection() {
             {isAnnual && (
               <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save 28%</div>
             )}
-            <h3 className="text-2xl font-bold text-white">Creator</h3>
-            <div className="text-4xl font-bold text-white my-4">
+            <h3 className="text-xl md:text-2xl font-bold text-white">Creator</h3>
+            <div className="text-xl md:text-2xl md:text-4xl font-bold text-white my-4">
               ${isAnnual ? '23' : '32'}
               <span className="text-lg text-[#A0A0A0]">/mo</span>
             </div>
@@ -107,8 +107,8 @@ export default function PricingSection() {
             {isAnnual && (
               <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save 18%</div>
             )}
-            <h3 className="text-2xl font-bold text-white">Business</h3>
-            <div className="text-4xl font-bold text-white my-4">
+            <h3 className="text-xl md:text-2xl font-bold text-white">Business</h3>
+            <div className="text-xl md:text-2xl md:text-4xl font-bold text-white my-4">
               ${isAnnual ? '49' : '60'}
               <span className="text-lg text-[#A0A0A0]">/mo</span>
             </div>
