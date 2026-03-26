@@ -1,4 +1,5 @@
 import ChatWidget from '@/components/ChatWidget'
+import PricingSection from '@/components/PricingSection'
 import Link from 'next/link'
 
 export default function Home() {
@@ -168,84 +169,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section id="pricing" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-sm text-gray-500 uppercase tracking-wider">Simple pricing</span>
-            <h2 className="text-4xl font-bold text-white mt-2">One price. No surprises.</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-4 gap-6">
-            {/* Free */}
-            <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-[#1F1F1F]">
-              <h3 className="text-2xl font-bold text-white">Free</h3>
-              <div className="text-4xl font-bold text-white my-4">$0</div>
-              <ul className="space-y-3 mb-8">
-                <li className="text-sm text-[#A0A0A0]">1 hour per month</li>
-                <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
-                <li className="text-sm text-[#A0A0A0]">Email notifications</li>
-                <li className="text-sm text-[#A0A0A0]">Email support</li>
-              </ul>
-              <a href="https://app.deum.video/sign-up" className="block w-full py-3 text-center border border-[#1F1F1F] rounded-lg text-[#A0A0A0] hover:border-gray-400 transition-colors">
-                Start free
-              </a>
-            </div>
-
-            {/* Hobby */}
-            <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-[#1F1F1F]">
-              <div className="text-xs font-semibold text-indigo-600 mb-2">Save 25%</div>
-              <h3 className="text-2xl font-bold text-white">Hobby</h3>
-              <div className="text-4xl font-bold text-white my-4">$15<span className="text-lg text-gray-500">/mo</span></div>
-              <div className="text-xs text-gray-500 mb-4">billed annually</div>
-              <ul className="space-y-3 mb-8">
-                <li className="text-sm text-[#A0A0A0]">10 hours per month</li>
-                <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
-                <li className="text-sm text-[#A0A0A0]">Priority support</li>
-              </ul>
-              <a href="https://buy.stripe.com/eVq7sD8mFc21bn86Jnebu0d" className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
-                Start Hobby
-              </a>
-            </div>
-
-            {/* Creator */}
-            <div className="bg-[#3B82F6] p-8 rounded-2xl border-2 border-indigo-500 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                Most popular
-              </div>
-              <div className="text-xs font-semibold text-indigo-400 mb-2">Save 28%</div>
-              <h3 className="text-2xl font-bold text-white">Creator</h3>
-              <div className="text-4xl font-bold text-white my-4">$23<span className="text-lg text-gray-400">/mo</span></div>
-              <div className="text-xs text-gray-400 mb-4">billed annually</div>
-              <ul className="space-y-3 mb-8">
-                <li className="text-sm text-gray-300">30 hours per month</li>
-                <li className="text-sm text-gray-300">Up to 4K quality</li>
-                <li className="text-sm text-gray-300">Priority processing</li>
-              </ul>
-              <a href="https://buy.stripe.com/5kQfZ95at6HHaj41p3ebu0e" className="block w-full py-3 text-center bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors">
-                Start Creator
-              </a>
-            </div>
-
-            {/* Business */}
-            <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-[#1F1F1F]">
-              <div className="text-xs font-semibold text-indigo-600 mb-2">Save 18%</div>
-              <h3 className="text-2xl font-bold text-white">Business</h3>
-              <div className="text-4xl font-bold text-white my-4">$49<span className="text-lg text-gray-500">/mo</span></div>
-              <div className="text-xs text-gray-500 mb-4">billed annually</div>
-              <ul className="space-y-3 mb-8">
-                <li className="text-sm text-[#A0A0A0]">40 hours per month</li>
-                <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
-                <li className="text-sm text-[#A0A0A0]">Dedicated support</li>
-              </ul>
-              <a href="https://buy.stripe.com/9B6aEPauN4zz2QCgjXebu0f" className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
-                Start Business
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <PricingSection />
       {/* CTA */}
       <section className="py-20 px-6 bg-[#111111]">
         <div className="max-w-3xl mx-auto text-center">
