@@ -47,6 +47,8 @@ export default function ChatWidget() {
   const [knowledge, setKnowledge] = useState<KnowledgeBase | null>(null)
   const [agent, setAgent] = useState<TeamMember | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const inactivityWarningsRef = useRef(0)
   
   // Load knowledge base (don't assign agent yet)
   useEffect(() => {
@@ -189,6 +191,55 @@ export default function ChatWidget() {
   
   // No auto-open - user initiates conversation
   
+  // Inactivity detection
+  const startInactivityTimer = () => {
+    // Clear any existing timer
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current)
+    }
+    
+    // First check: 2 minutes
+    inactivityTimerRef.current = setTimeout(async () => {
+      if (inactivityWarningsRef.current === 0) {
+        inactivityWarningsRef.current = 1
+        setIsTyping(true)
+        await new Promise(resolve => setTimeout(resolve, 1500))
+        setIsTyping(false)
+        addMessage("Are you still there? 👋", 'agent')
+        
+        // Second check: 1 minute later
+        inactivityTimerRef.current = setTimeout(async () => {
+          if (inactivityWarningsRef.current === 1) {
+            inactivityWarningsRef.current = 2
+            setIsTyping(true)
+            await new Promise(resolve => setTimeout(resolve, 1500))
+            setIsTyping(false)
+            addMessage("I'll close this chat if you're not there. Thanks for visiting!", 'agent')
+            
+            // Final: End session after 30 seconds
+            inactivityTimerRef.current = setTimeout(() => {
+              // Reset everything for new session
+              setAgent(null)
+              setMessages([])
+              setHasShownIntro(false)
+              inactivityWarningsRef.current = 0
+              setIsOpen(false)
+            }, 30000)
+          }
+        }, 60000)
+      }
+    }, 120000)
+  }
+  
+  // Reset inactivity timer on user message
+  const resetInactivityTimer = () => {
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current)
+    }
+    inactivityWarningsRef.current = 0
+    startInactivityTimer()
+  }
+  
   // Scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -219,6 +270,9 @@ export default function ChatWidget() {
     const userInput = inputValue
     addMessage(userInput, 'user')
     setInputValue('')
+    
+    // Reset inactivity timer on user activity
+    resetInactivityTimer()
     
     // If this is first message, trigger agent assignment theater
     if (!hasShownIntro) {
@@ -259,6 +313,9 @@ export default function ChatWidget() {
       
       await simulateTyping(reply.length)
       addMessage(reply, 'agent')
+      
+      // Start inactivity timer after agent responds
+      startInactivityTimer()
       
     } catch (error) {
       console.error('Chat error:', error)
