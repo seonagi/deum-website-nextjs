@@ -107,14 +107,13 @@ export default function ChatWidget() {
   
   // Show tooltip after 3 seconds
   useEffect(() => {
-    if (!agent) return
     const timer = setTimeout(() => {
       setShowTooltip(true)
       // Hide after 15 seconds
       setTimeout(() => setShowTooltip(false), 15000)
     }, 3000)
     return () => clearTimeout(timer)
-  }, [agent])
+  }, [])
   
   // Show agent assignment theater (triggered after user's first message)
   const showAgentAssignment = async (userQuestion: string) => {
