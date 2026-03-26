@@ -4,6 +4,21 @@ import { useState } from 'react'
 
 export default function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(true)
+  
+  const plans = {
+    hobby: {
+      monthly: { price: 20, link: 'https://buy.stripe.com/8x28wH8mF1nn76S8Rvebu08' },
+      annual: { price: 15, link: 'https://buy.stripe.com/eVq7sD8mFc21bn86Jnebu0d', savings: 25 },
+    },
+    creator: {
+      monthly: { price: 32, link: 'https://buy.stripe.com/aFa8wHcCV3vvgHsd7Lebu09' },
+      annual: { price: 23, link: 'https://buy.stripe.com/5kQfZ95at6HHaj41p3ebu0e', savings: 28 },
+    },
+    business: {
+      monthly: { price: 60, link: 'https://buy.stripe.com/14A4gr8mF3vv9f0d7Lebu0a' },
+      annual: { price: 49, link: 'https://buy.stripe.com/9B6aEPauN4zz2QCgjXebu0f', savings: 18 },
+    },
+  }
 
   return (
     <section id="pricing" className="py-20 px-6">
@@ -56,11 +71,11 @@ export default function PricingSection() {
           {/* Hobby */}
           <div className="bg-[#111111] p-8 rounded-2xl border border-[#1F1F1F]">
             {isAnnual && (
-              <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save 25%</div>
+              <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save {plans.hobby.annual.savings}%</div>
             )}
             <h3 className="text-xl md:text-2xl font-bold text-white">Hobby</h3>
             <div className="text-xl md:text-2xl md:text-4xl font-bold text-white my-4">
-              ${isAnnual ? '15' : '20'}
+              ${isAnnual ? plans.hobby.annual.price : plans.hobby.monthly.price}
               <span className="text-lg text-[#A0A0A0]">/mo</span>
             </div>
             {isAnnual && (
@@ -71,7 +86,7 @@ export default function PricingSection() {
               <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
               <li className="text-sm text-[#A0A0A0]">Priority support</li>
             </ul>
-            <a href="https://buy.stripe.com/eVq7sD8mFc21bn86Jnebu0d" className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
+            <a href={isAnnual ? plans.hobby.annual.link : plans.hobby.monthly.link} className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
               Start Hobby
             </a>
           </div>
@@ -82,11 +97,11 @@ export default function PricingSection() {
               Most popular
             </div>
             {isAnnual && (
-              <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save 28%</div>
+              <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save {plans.creator.annual.savings}%</div>
             )}
             <h3 className="text-xl md:text-2xl font-bold text-white">Creator</h3>
             <div className="text-xl md:text-2xl md:text-4xl font-bold text-white my-4">
-              ${isAnnual ? '23' : '32'}
+              ${isAnnual ? plans.creator.annual.price : plans.creator.monthly.price}
               <span className="text-lg text-[#A0A0A0]">/mo</span>
             </div>
             {isAnnual && (
@@ -97,7 +112,7 @@ export default function PricingSection() {
               <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
               <li className="text-sm text-[#A0A0A0]">Priority processing</li>
             </ul>
-            <a href="https://buy.stripe.com/5kQfZ95at6HHaj41p3ebu0e" className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
+            <a href={isAnnual ? plans.creator.annual.link : plans.creator.monthly.link} className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
               Start Creator
             </a>
           </div>
@@ -105,11 +120,11 @@ export default function PricingSection() {
           {/* Business */}
           <div className="bg-[#111111] p-8 rounded-2xl border border-[#1F1F1F]">
             {isAnnual && (
-              <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save 18%</div>
+              <div className="text-xs font-semibold text-[#3B82F6] mb-2">Save {plans.business.annual.savings}%</div>
             )}
             <h3 className="text-xl md:text-2xl font-bold text-white">Business</h3>
             <div className="text-xl md:text-2xl md:text-4xl font-bold text-white my-4">
-              ${isAnnual ? '49' : '60'}
+              ${isAnnual ? plans.business.annual.price : plans.business.monthly.price}
               <span className="text-lg text-[#A0A0A0]">/mo</span>
             </div>
             {isAnnual && (
@@ -120,7 +135,7 @@ export default function PricingSection() {
               <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
               <li className="text-sm text-[#A0A0A0]">Dedicated support</li>
             </ul>
-            <a href="https://buy.stripe.com/9B6aEPauN4zz2QCgjXebu0f" className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
+            <a href={isAnnual ? plans.business.annual.link : plans.business.monthly.link} className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
               Start Business
             </a>
           </div>
