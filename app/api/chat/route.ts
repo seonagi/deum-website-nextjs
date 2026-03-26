@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
         model: 'anthropic/claude-sonnet-4.5',
         messages: allMessages,
         temperature: 0.8,
-        max_tokens: 300
+        max_tokens: 150
       })
     })
     
