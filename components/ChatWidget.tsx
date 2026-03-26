@@ -168,7 +168,7 @@ export default function ChatWidget() {
       setCountdown(0)
       
       // Agent introduction (no "welcome back")
-      const intro = `Hi, I'm ${currentAgent.name} from ${currentAgent.role} 👋`
+      const intro = `Hi, I'm ${currentAgent.name} from Deum 👋`
       setIsTyping(true)
       await new Promise(resolve => setTimeout(resolve, intro.length * 40))
       setIsTyping(false)
