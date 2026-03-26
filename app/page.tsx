@@ -39,10 +39,10 @@ export default function Home() {
 
       {/* Hero */}
       <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto text-center relative">
-          {/* ADHD Badge - "stuck on" look */}
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 rotate-[-2deg] z-10">
-            <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg shadow-lg font-bold text-sm border-2 border-orange-400">
+        <div className="max-w-7xl mx-auto text-center">
+          {/* ADHD Badge - "stuck on" look, centered above headline */}
+          <div className="flex justify-center mb-6">
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg shadow-lg font-bold text-sm border-2 border-orange-400 rotate-[-2deg]">
               Built for ADHD creators
             </div>
           </div>
