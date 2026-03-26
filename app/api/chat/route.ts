@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
         'X-Title': 'Deum Chat'
       },
       body: JSON.stringify({
-        model: 'anthropic/claude-3-5-haiku-latest',
+        model: 'anthropic/claude-3.5-haiku',
         messages: allMessages,
         temperature: 0.8,
         max_tokens: 300
