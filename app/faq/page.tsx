@@ -17,7 +17,7 @@ export default function FAQPage() {
     },
     {
       q: "How accurate is the filler detection?",
-      a: "Our AI detects fillers like "um," "uh," "like," and "you know" with 97% accuracy. We use a two-stage validation system to prevent cutting real words. Most cuts are seamless, but occasionally you might notice a slightly abrupt transition. That's why we recommend adding b-roll clips to cover any imperfect cuts. B-roll not only smooths over transitions, it makes your video more engaging overall."
+      a: "Our AI detects fillers like \"um,\" \"uh,\" \"like,\" and \"you know\" with 97% accuracy. We use a two-stage validation system to prevent cutting real words. Most cuts are seamless, but occasionally you might notice a slightly abrupt transition. That's why we recommend adding b-roll clips to cover any imperfect cuts. B-roll not only smooths over transitions, it makes your video more engaging overall."
     },
     {
       q: "Is my video private and secure?",
