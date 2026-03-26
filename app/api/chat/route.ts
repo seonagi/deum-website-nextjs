@@ -1,4 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabaseAdmin } from '@/lib/supabase'
+
+async function logChat(userQuestion: string, agentResponse: string, agentName: string) {
+  try {
+    if (!supabaseAdmin) {
+      console.warn('[Chat Log] Supabase not configured, skipping log')
+      return
+    }
+    
+    const { error } = await supabaseAdmin
+      .from('chat_logs')
+      .insert({
+        agent: agentName,
+        question: userQuestion,
+        response: agentResponse,
+        response_length: agentResponse.length
+      })
+    
+    if (error) {
+      console.error('[Chat Log] Supabase insert failed:', error)
+    }
+  } catch (error) {
+    console.error('[Chat Log] Failed to log chat:', error)
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -60,6 +85,12 @@ export async function POST(req: NextRequest) {
     
     const message = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a response."
     console.log('[Chat API] Sending response, message length:', message.length)
+    
+    // Log chat interaction (async, don't block response)
+    const agentName = systemPrompt?.match(/You are (\w+) from/)?.[1] || 'Unknown'
+    logChat(userMessage, message, agentName).catch(err => 
+      console.error('[Chat Log] Async log failed:', err)
+    )
     
     return NextResponse.json({ message })
     
