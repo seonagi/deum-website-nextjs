@@ -149,9 +149,15 @@ export default function AboutPage() {
             </p>
             <a 
               href="mailto:elliot@deum.video" 
-              className="inline-block px-6 py-3 bg-[#3B82F6] text-white rounded-lg font-medium hover:bg-[#2563EB] transition-colors"
+              className="inline-block rounded-lg hover:opacity-90 transition-opacity"
             >
-              Email me: elliot@deum.video
+              <Image 
+                src="/images/email-button.png" 
+                alt="Contact email" 
+                width={280}
+                height={48}
+                className="rounded-lg"
+              />
             </a>
           </div>
         </div>
