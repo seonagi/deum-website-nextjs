@@ -333,20 +333,21 @@ ${agent.can_escalate_to_founder ? `You work closely with Elliot (founder) and ca
 Remember: Short, warm, helpful responses. You're a real person helping a real customer.`
   }
   
-  if (!knowledge || !agent) return null
+  // Show button even before knowledge loads
+  const displayAgent = agent || { name: 'Support', role: 'Support' }
   
   return (
     <>
       {/* Tooltip */}
       {showTooltip && !isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 bg-white shadow-xl rounded-xl p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <div className="fixed bottom-24 right-6 z-50 bg-white shadow-xl rounded-xl p-4 max-w-xs transition-all duration-300">
           <div className="flex items-start space-x-3">
             <div className="flex-shrink-0 w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white">
               <MessageSquare className="w-5 h-5" />
             </div>
             <div className="flex-1">
               <p className="text-sm font-medium text-gray-900">
-                {agent.name} is here to answer your questions - just click the icon
+                {displayAgent.name} is here to answer your questions - just click the icon
               </p>
             </div>
             <button
@@ -373,13 +374,13 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
           <MessageSquare className="w-6 h-6" />
           <span className="absolute top-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
           <span className="absolute -bottom-8 right-0 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-            Chat with {agent.name}
+            Chat with {displayAgent.name}
           </span>
         </button>
       )}
       
       {/* Chat Window */}
-      {isOpen && (
+      {isOpen && knowledge && agent && (
         <div className={`fixed inset-0 md:inset-auto md:bottom-6 md:right-6 z-50 bg-white md:rounded-2xl shadow-2xl transition-all duration-300 ${
           isMinimized ? 'md:w-80 md:h-16' : 'md:w-96 md:h-[600px]'
         } ${isMinimized ? '' : 'w-full h-full md:max-w-[400px] md:max-h-[600px]'}`}>
