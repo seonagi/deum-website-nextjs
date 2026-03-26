@@ -3,22 +3,22 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#0A0A0A]">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-40 border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 bg-[#0A0A0A]/80 backdrop-blur-sm z-40 border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-gray-900">deum</div>
+            <div className="text-2xl font-bold text-white">deum</div>
             <div className="flex items-center gap-8">
-              <a href="#how" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <a href="#how" className="text-[#A0A0A0] hover:text-white transition-colors">
                 How it works
               </a>
-              <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <a href="#pricing" className="text-[#A0A0A0] hover:text-white transition-colors">
                 Pricing
               </a>
               <a
                 href="https://app.deum.video/sign-in"
-                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:border-gray-400 transition-colors"
+                className="px-4 py-2 border border-[#1F1F1F] rounded-lg text-[#A0A0A0] hover:border-gray-400 transition-colors"
               >
                 Sign in
               </a>
@@ -30,21 +30,21 @@ export default function Home() {
       {/* Hero */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-6xl font-bold text-white mb-6">
             Video editing on autopilot.
           </h1>
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-[#A0A0A0] mb-10 max-w-2xl mx-auto">
             Upload your video. Go grab coffee.<br />
             AI removes every filler. We email when it's ready.
           </p>
           <div className="flex items-center justify-center gap-4 mb-16">
             <a
               href="https://app.deum.video/sign-up"
-              className="px-8 py-4 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+              className="px-8 py-4 bg-[#3B82F6] text-white rounded-lg font-medium hover:bg-[#2563EB] transition-colors"
             >
               Try 1 video free
             </a>
-            <a href="#demo" className="px-8 py-4 text-gray-700 hover:text-gray-900 transition-colors">
+            <a href="#demo" className="px-8 py-4 text-[#A0A0A0] hover:text-white transition-colors">
               See demo →
             </a>
           </div>
@@ -52,32 +52,32 @@ export default function Home() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-12 max-w-3xl mx-auto">
             <div>
-              <div className="text-5xl font-bold text-gray-900">10x</div>
-              <div className="text-sm text-gray-600 mt-2">Faster than manual editing</div>
+              <div className="text-5xl font-bold text-white">10x</div>
+              <div className="text-sm text-[#A0A0A0] mt-2">Faster than manual editing</div>
             </div>
             <div>
-              <div className="text-5xl font-bold text-gray-900">97%</div>
-              <div className="text-sm text-gray-600 mt-2">Accuracy rate</div>
+              <div className="text-5xl font-bold text-white">97%</div>
+              <div className="text-sm text-[#A0A0A0] mt-2">Accuracy rate</div>
             </div>
             <div>
-              <div className="text-5xl font-bold text-gray-900">10min</div>
-              <div className="text-sm text-gray-600 mt-2">Average render</div>
+              <div className="text-5xl font-bold text-white">10min</div>
+              <div className="text-sm text-[#A0A0A0] mt-2">Average render</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Before & After */}
-      <section id="demo" className="py-20 px-6 bg-gray-50">
+      <section id="demo" className="py-20 px-6 bg-[#111111]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm text-gray-500 uppercase tracking-wider">See the difference</span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-2">Before & After</h2>
+            <h2 className="text-4xl font-bold text-white mt-2">Before & After</h2>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 items-center">
             {/* Before */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-[#0A0A0A] p-8 rounded-2xl shadow-sm">
               <span className="text-sm font-medium text-gray-500">Before</span>
               <div className="flex items-end gap-1 h-24 my-6">
                 {[60, 80, 40, 90, 30, 70, 85, 35, 75].map((height, i) => (
@@ -88,14 +88,14 @@ export default function Home() {
                   />
                 ))}
               </div>
-              <p className="text-gray-700 italic">&quot;Um... so I think, uh, we should like...&quot;</p>
+              <p className="text-[#A0A0A0] italic">&quot;Um... so I think, uh, we should like...&quot;</p>
             </div>
 
             {/* Arrow */}
             <div className="text-center text-4xl text-gray-400">→</div>
 
             {/* After */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-[#0A0A0A] p-8 rounded-2xl shadow-sm">
               <span className="text-sm font-medium text-gray-500">After</span>
               <div className="flex items-end gap-1 h-24 my-6">
                 {[60, 80, 90, 70, 85, 75].map((height, i) => (
@@ -106,7 +106,7 @@ export default function Home() {
                   />
                 ))}
               </div>
-              <p className="text-gray-700 italic">&quot;I think we should proceed with this&quot;</p>
+              <p className="text-[#A0A0A0] italic">&quot;I think we should proceed with this&quot;</p>
             </div>
           </div>
         </div>
@@ -117,52 +117,52 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-sm text-gray-500 uppercase tracking-wider">Three steps</span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-2">Simpler than hiring an editor</h2>
+            <h2 className="text-4xl font-bold text-white mt-2">Simpler than hiring an editor</h2>
           </div>
           
           <div className="grid md:grid-cols-3 gap-12">
             <div>
               <div className="text-5xl font-bold text-gray-200 mb-4">01</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Upload</h3>
-              <p className="text-gray-600">Drag and drop your video. MP4, MOV, or AVI. Up to 4K quality.</p>
+              <h3 className="text-2xl font-bold text-white mb-2">Upload</h3>
+              <p className="text-[#A0A0A0]">Drag and drop your video. MP4, MOV, or AVI. Up to 4K quality.</p>
             </div>
             <div>
               <div className="text-5xl font-bold text-gray-200 mb-4">02</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Process</h3>
-              <p className="text-gray-600">AI identifies and removes every filler. Audio polish included.</p>
+              <h3 className="text-2xl font-bold text-white mb-2">Process</h3>
+              <p className="text-[#A0A0A0]">AI identifies and removes every filler. Audio polish included.</p>
             </div>
             <div>
               <div className="text-5xl font-bold text-gray-200 mb-4">03</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Download</h3>
-              <p className="text-gray-600">Grab your polished video. Original quality. Professional sound.</p>
+              <h3 className="text-2xl font-bold text-white mb-2">Download</h3>
+              <p className="text-[#A0A0A0]">Grab your polished video. Original quality. Professional sound.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-[#111111]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <div className="text-3xl mb-3">⚡</div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Lightning fast</h3>
-              <p className="text-sm text-gray-600">Most videos render in under 10 minutes. No timeline scrubbing.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Lightning fast</h3>
+              <p className="text-sm text-[#A0A0A0]">Most videos render in under 10 minutes. No timeline scrubbing.</p>
             </div>
             <div>
               <div className="text-3xl mb-3">🎯</div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Surgical precision</h3>
-              <p className="text-sm text-gray-600">97% accuracy. Removes "um", "uh", "er", "like" - keeps everything else.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Surgical precision</h3>
+              <p className="text-sm text-[#A0A0A0]">97% accuracy. Removes "um", "uh", "er", "like" - keeps everything else.</p>
             </div>
             <div>
               <div className="text-3xl mb-3">🎨</div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Audio polish</h3>
-              <p className="text-sm text-gray-600">Loudness normalization and compression. Broadcast-ready.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Audio polish</h3>
+              <p className="text-sm text-[#A0A0A0]">Loudness normalization and compression. Broadcast-ready.</p>
             </div>
             <div>
               <div className="text-3xl mb-3">🔒</div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Private & secure</h3>
-              <p className="text-sm text-gray-600">Your videos are encrypted and deleted after 24 hours.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Private & secure</h3>
+              <p className="text-sm text-[#A0A0A0]">Your videos are encrypted and deleted after 24 hours.</p>
             </div>
           </div>
         </div>
@@ -173,43 +173,43 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm text-gray-500 uppercase tracking-wider">Simple pricing</span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-2">One price. No surprises.</h2>
+            <h2 className="text-4xl font-bold text-white mt-2">One price. No surprises.</h2>
           </div>
           
           <div className="grid md:grid-cols-4 gap-6">
             {/* Free */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900">Free</h3>
-              <div className="text-4xl font-bold text-gray-900 my-4">$0</div>
+            <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-[#1F1F1F]">
+              <h3 className="text-2xl font-bold text-white">Free</h3>
+              <div className="text-4xl font-bold text-white my-4">$0</div>
               <ul className="space-y-3 mb-8">
-                <li className="text-sm text-gray-600">1 hour per month</li>
-                <li className="text-sm text-gray-600">Up to 4K quality</li>
-                <li className="text-sm text-gray-600">Email notifications</li>
-                <li className="text-sm text-gray-600">Email support</li>
+                <li className="text-sm text-[#A0A0A0]">1 hour per month</li>
+                <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
+                <li className="text-sm text-[#A0A0A0]">Email notifications</li>
+                <li className="text-sm text-[#A0A0A0]">Email support</li>
               </ul>
-              <a href="https://app.deum.video/sign-up" className="block w-full py-3 text-center border border-gray-300 rounded-lg text-gray-700 hover:border-gray-400 transition-colors">
+              <a href="https://app.deum.video/sign-up" className="block w-full py-3 text-center border border-[#1F1F1F] rounded-lg text-[#A0A0A0] hover:border-gray-400 transition-colors">
                 Start free
               </a>
             </div>
 
             {/* Hobby */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-200">
+            <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-[#1F1F1F]">
               <div className="text-xs font-semibold text-indigo-600 mb-2">Save 25%</div>
-              <h3 className="text-2xl font-bold text-gray-900">Hobby</h3>
-              <div className="text-4xl font-bold text-gray-900 my-4">$15<span className="text-lg text-gray-500">/mo</span></div>
+              <h3 className="text-2xl font-bold text-white">Hobby</h3>
+              <div className="text-4xl font-bold text-white my-4">$15<span className="text-lg text-gray-500">/mo</span></div>
               <div className="text-xs text-gray-500 mb-4">billed annually</div>
               <ul className="space-y-3 mb-8">
-                <li className="text-sm text-gray-600">10 hours per month</li>
-                <li className="text-sm text-gray-600">Up to 4K quality</li>
-                <li className="text-sm text-gray-600">Priority support</li>
+                <li className="text-sm text-[#A0A0A0]">10 hours per month</li>
+                <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
+                <li className="text-sm text-[#A0A0A0]">Priority support</li>
               </ul>
-              <a href="https://buy.stripe.com/eVq7sD8mFc21bn86Jnebu0d" className="block w-full py-3 text-center bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+              <a href="https://buy.stripe.com/eVq7sD8mFc21bn86Jnebu0d" className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
                 Start Hobby
               </a>
             </div>
 
             {/* Creator */}
-            <div className="bg-gray-900 p-8 rounded-2xl border-2 border-indigo-500 relative">
+            <div className="bg-[#3B82F6] p-8 rounded-2xl border-2 border-indigo-500 relative">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
                 Most popular
               </div>
@@ -228,17 +228,17 @@ export default function Home() {
             </div>
 
             {/* Business */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-200">
+            <div className="bg-[#0A0A0A] p-8 rounded-2xl border border-[#1F1F1F]">
               <div className="text-xs font-semibold text-indigo-600 mb-2">Save 18%</div>
-              <h3 className="text-2xl font-bold text-gray-900">Business</h3>
-              <div className="text-4xl font-bold text-gray-900 my-4">$49<span className="text-lg text-gray-500">/mo</span></div>
+              <h3 className="text-2xl font-bold text-white">Business</h3>
+              <div className="text-4xl font-bold text-white my-4">$49<span className="text-lg text-gray-500">/mo</span></div>
               <div className="text-xs text-gray-500 mb-4">billed annually</div>
               <ul className="space-y-3 mb-8">
-                <li className="text-sm text-gray-600">40 hours per month</li>
-                <li className="text-sm text-gray-600">Up to 4K quality</li>
-                <li className="text-sm text-gray-600">Dedicated support</li>
+                <li className="text-sm text-[#A0A0A0]">40 hours per month</li>
+                <li className="text-sm text-[#A0A0A0]">Up to 4K quality</li>
+                <li className="text-sm text-[#A0A0A0]">Dedicated support</li>
               </ul>
-              <a href="https://buy.stripe.com/9B6aEPauN4zz2QCgjXebu0f" className="block w-full py-3 text-center bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+              <a href="https://buy.stripe.com/9B6aEPauN4zz2QCgjXebu0f" className="block w-full py-3 text-center bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] transition-colors">
                 Start Business
               </a>
             </div>
@@ -247,13 +247,13 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-[#111111]">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Ready to sound professional?</h2>
-          <p className="text-lg text-gray-600 mb-8">Try your first video free. No credit card required.</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Ready to sound professional?</h2>
+          <p className="text-lg text-[#A0A0A0] mb-8">Try your first video free. No credit card required.</p>
           <a
             href="https://app.deum.video/sign-up"
-            className="inline-block px-8 py-4 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+            className="inline-block px-8 py-4 bg-[#3B82F6] text-white rounded-lg font-medium hover:bg-[#2563EB] transition-colors"
           >
             Get started →
           </a>
@@ -263,35 +263,35 @@ export default function Home() {
       {/* Testimonials */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">What Users Say</h2>
+          <h2 className="text-4xl font-bold text-white mb-12 text-center">What Users Say</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
+            <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
               <div className="flex items-center gap-2 mb-4">
-                <div className="font-semibold text-gray-900">Aiva Rose</div>
+                <div className="font-semibold text-white">Aiva Rose</div>
                 <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
               </div>
-              <p className="text-gray-600">&quot;Saved me 2 hours on every video. Descript without the confusion. The filler removal is shockingly accurate and the b-roll feature is genius. Worth every penny.&quot;</p>
+              <p className="text-[#A0A0A0]">&quot;Saved me 2 hours on every video. Descript without the confusion. The filler removal is shockingly accurate and the b-roll feature is genius. Worth every penny.&quot;</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
+            <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
               <div className="flex items-center gap-2 mb-4">
-                <div className="font-semibold text-gray-900">Jonathan</div>
+                <div className="font-semibold text-white">Jonathan</div>
                 <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
               </div>
-              <p className="text-gray-600">&quot;A game changer for video editing.&quot;</p>
+              <p className="text-[#A0A0A0]">&quot;A game changer for video editing.&quot;</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border border-gray-200">
+            <div className="bg-[#0A0A0A] p-6 rounded-xl border border-[#1F1F1F]">
               <div className="flex items-center gap-2 mb-4">
-                <div className="font-semibold text-gray-900">Ozair Levi</div>
+                <div className="font-semibold text-white">Ozair Levi</div>
                 <div className="text-yellow-400">⭐⭐⭐⭐</div>
               </div>
-              <p className="text-gray-600">&quot;I was skeptical but the output quality is genuinely impressive and I did not have to do any work myself. Really solid tool for content creators.&quot;</p>
+              <p className="text-[#A0A0A0]">&quot;I was skeptical but the output quality is genuinely impressive and I did not have to do any work myself. Really solid tool for content creators.&quot;</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-gray-900 text-white">
+      <footer className="py-12 px-6 bg-[#3B82F6] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>

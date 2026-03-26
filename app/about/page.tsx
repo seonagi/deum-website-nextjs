@@ -3,16 +3,16 @@ import ChatWidget from '@/components/ChatWidget'
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#0A0A0A]">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-40 border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 bg-[#0A0A0A]/80 backdrop-blur-sm z-40 border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-gray-900">deum</Link>
+            <Link href="/" className="text-2xl font-bold text-white">deum</Link>
             <div className="flex items-center gap-8">
-              <Link href="/#how" className="text-gray-600 hover:text-gray-900 transition-colors">How it works</Link>
-              <Link href="/#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</Link>
-              <a href="https://app.deum.video/sign-in" className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:border-gray-400 transition-colors">
+              <Link href="/#how" className="text-[#A0A0A0] hover:text-white transition-colors">How it works</Link>
+              <Link href="/#pricing" className="text-[#A0A0A0] hover:text-white transition-colors">Pricing</Link>
+              <a href="https://app.deum.video/sign-in" className="px-4 py-2 border border-[#1F1F1F] rounded-lg text-[#A0A0A0] hover:border-gray-400 transition-colors">
                 Sign in
               </a>
             </div>
@@ -23,23 +23,23 @@ export default function AboutPage() {
       {/* About Content */}
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">About Deum</h1>
-          <p className="text-xl text-gray-600 mb-12">
+          <h1 className="text-5xl font-bold text-white mb-6">About Deum</h1>
+          <p className="text-xl text-[#A0A0A0] mb-12">
             We built Deum because video editing shouldn't be complicated.
           </p>
 
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
-            <p className="text-gray-600 mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Our Mission</h2>
+            <p className="text-[#A0A0A0] mb-8">
               Deum makes professional video editing accessible to everyone through AI-powered automation. 
               No timeline. No learning curve. Just upload, process, and download.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why We're Different</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">Why We're Different</h2>
+            <p className="text-[#A0A0A0] mb-4">
               Most video editors are complex tools that require weeks to learn. Deum is different:
             </p>
-            <ul className="list-disc list-inside text-gray-600 mb-8 space-y-2">
+            <ul className="list-disc list-inside text-[#A0A0A0] mb-8 space-y-2">
               <li>10x faster than manual editing</li>
               <li>97% accuracy in filler word detection</li>
               <li>No software to install or learn</li>
@@ -47,20 +47,20 @@ export default function AboutPage() {
               <li>Your videos stay private and secure</li>
             </ul>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Built for Creators</h2>
-            <p className="text-gray-600 mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Built for Creators</h2>
+            <p className="text-[#A0A0A0] mb-8">
               Whether you're a YouTuber, podcaster, course creator, or business owner making marketing videos, 
               Deum saves you hours every week. Focus on creating great content, not editing it.
             </p>
 
-            <div className="bg-gray-50 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="bg-[#111111] p-8 rounded-2xl">
+              <h3 className="text-2xl font-bold text-white mb-4">Get in Touch</h3>
+              <p className="text-[#A0A0A0] mb-4">
                 Questions? Feedback? We'd love to hear from you.
               </p>
               <a 
                 href="mailto:hello@deum.video" 
-                className="inline-block px-6 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                className="inline-block px-6 py-3 bg-[#3B82F6] text-white rounded-lg font-medium hover:bg-[#2563EB] transition-colors"
               >
                 Email us: hello@deum.video
               </a>
@@ -70,7 +70,7 @@ export default function AboutPage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-gray-900 text-white">
+      <footer className="py-12 px-6 bg-[#3B82F6] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>

@@ -288,7 +288,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
           aria-label="Open chat"
         >
           <MessageSquare className="w-6 h-6" />
@@ -304,7 +304,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
           isMinimized ? 'w-80 h-16' : 'w-96 h-[600px]'
         }`}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -344,9 +344,9 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                   <div className="flex justify-center items-center h-full">
                     <div className="text-center">
                       <div className="flex justify-center space-x-2 mb-3">
-                        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
                       <p className="text-sm text-gray-600">{waitMessage}</p>
                     </div>
@@ -360,7 +360,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                   >
                     <div className={`max-w-[80%] ${
                       message.sender === 'user'
-                        ? 'bg-gradient-to-br from-indigo-100 to-indigo-200 text-gray-900'
+                        ? 'bg-gradient-to-br from-orange-100 to-orange-200 text-gray-900'
                         : 'bg-gray-100 text-gray-900'
                     } rounded-2xl px-4 py-2`}>
                       <p className="text-sm whitespace-pre-line">{message.text}</p>
@@ -398,12 +398,12 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                     placeholder="Ask about pricing, features..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-indigo-500 text-sm"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-orange-500 text-sm"
                   />
                   <button
                     onClick={handleSend}
                     disabled={!inputValue.trim()}
-                    className="p-2 bg-gradient-to-br from-indigo-500 to-indigo-600 text-white rounded-full hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="p-2 bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-full hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-5 h-5" />
                   </button>

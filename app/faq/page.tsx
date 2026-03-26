@@ -62,22 +62,22 @@ export default function FAQPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#0A0A0A]">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-40 border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 bg-[#0A0A0A]/80 backdrop-blur-sm z-40 border-b border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-gray-900">deum</Link>
+            <Link href="/" className="text-2xl font-bold text-white">deum</Link>
             <div className="flex items-center gap-8">
-              <Link href="/#how" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/#how" className="text-[#A0A0A0] hover:text-white transition-colors">
                 How it works
               </Link>
-              <Link href="/#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/#pricing" className="text-[#A0A0A0] hover:text-white transition-colors">
                 Pricing
               </Link>
               <a
                 href="https://app.deum.video/sign-in"
-                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:border-gray-400 transition-colors"
+                className="px-4 py-2 border border-[#1F1F1F] rounded-lg text-[#A0A0A0] hover:border-gray-400 transition-colors"
               >
                 Sign in
               </a>
@@ -90,15 +90,15 @@ export default function FAQPage() {
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
-            <p className="text-xl text-gray-600">Everything you need to know about Deum</p>
+            <h1 className="text-5xl font-bold text-white mb-4">Frequently Asked Questions</h1>
+            <p className="text-xl text-[#A0A0A0]">Everything you need to know about Deum</p>
           </div>
 
           <div className="space-y-8">
             {faqs.map((faq, index) => (
-              <div key={index} className="pb-8 border-b border-gray-200 last:border-0">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">{faq.q}</h2>
-                <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">{faq.a}</p>
+              <div key={index} className="pb-8 border-b border-[#1F1F1F] last:border-0">
+                <h2 className="text-2xl font-semibold text-white mb-4">{faq.q}</h2>
+                <p className="text-lg text-[#A0A0A0] leading-relaxed whitespace-pre-line">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -106,7 +106,7 @@ export default function FAQPage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-gray-900 text-white">
+      <footer className="py-12 px-6 bg-[#3B82F6] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
