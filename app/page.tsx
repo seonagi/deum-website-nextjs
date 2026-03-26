@@ -180,9 +180,9 @@ export default function Home() {
               <p className="text-sm text-[#A0A0A0]">Loudness normalization and compression. Broadcast-ready.</p>
             </div>
             <div>
-              <div className="text-3xl mb-3">🔒</div>
-              <h3 className="text-lg font-bold text-white mb-2">Private & secure</h3>
-              <p className="text-sm text-[#A0A0A0]">Your videos are encrypted and deleted after 24 hours.</p>
+              <div className="text-3xl mb-3">🧠</div>
+              <h3 className="text-lg font-bold text-white mb-2">Built for ADHD creators</h3>
+              <p className="text-sm text-[#A0A0A0]">No timeline to navigate. No endless clicking. One upload, done. Zero executive function drain.</p>
             </div>
           </div>
         </div>
