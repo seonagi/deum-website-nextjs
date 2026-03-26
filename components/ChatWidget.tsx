@@ -130,10 +130,10 @@ export default function ChatWidget() {
       currentAgent = { id: 'default', name: 'Support', role: 'Support' }
     }
     
-    // Step 1: "Finding available agent..." (4-10s random)
+    // Step 1: "Connecting you with one of our team..." (4-10s random)
     const findWait = 4000 + Math.floor(Math.random() * 6000)
     setIsWaitingForAgent(true)
-    setWaitMessage('Finding available agent...')
+    setWaitMessage('Connecting you with one of our team...')
     await new Promise(resolve => setTimeout(resolve, findWait))
     
     // Step 2: "You've been assigned to [Name]" (4-10s random)
@@ -146,7 +146,12 @@ export default function ChatWidget() {
     // Step 3: Countdown (9-25 seconds)
     const waitTime = 9 + Math.floor(Math.random() * 17) // 9-25 seconds
     setCountdown(waitTime)
-    setWaitMessage(`${currentAgent.name} is helping another customer`)
+    const waitVariations = [
+      `${currentAgent.name} is helping another user`,
+      `${currentAgent.name} is just finishing up with another user`,
+      `${currentAgent.name} is helping another person`
+    ]
+    setWaitMessage(waitVariations[Math.floor(Math.random() * waitVariations.length)])
     
     let remaining = waitTime
     const countdownInterval = setInterval(() => {
