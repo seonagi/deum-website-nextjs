@@ -65,10 +65,10 @@ export default function FAQPage() {
     <main className="min-h-screen bg-[#0A0A0A]">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-[#0A0A0A]/80 backdrop-blur-sm z-40 border-b border-[#1F1F1F]">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="text-lg md:text-2xl font-bold text-white">deum</Link>
-            <div className="flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6 text-sm">
               <Link href="/#how" className="text-[#A0A0A0] hover:text-white transition-colors">
                 How it works
               </Link>

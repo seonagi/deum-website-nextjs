@@ -34,8 +34,11 @@ export async function POST(req: NextRequest) {
     
     if (!response.ok) {
       const error = await response.text()
-      console.error('OpenRouter error:', error)
-      return NextResponse.json({ error: 'AI service error' }, { status: 500 })
+      console.error('OpenRouter error:', response.status, error)
+      return NextResponse.json({ 
+        error: 'AI service error',
+        details: `Status: ${response.status}`
+      }, { status: 500 })
     }
     
     const data = await response.json()

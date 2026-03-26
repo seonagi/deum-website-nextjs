@@ -211,7 +211,11 @@ export default function ChatWidget() {
         })
       })
       
-      if (!response.ok) throw new Error('API error')
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        console.error('API error:', response.status, errorData)
+        throw new Error(errorData.error || 'API error')
+      }
       
       const data = await response.json()
       const reply = data.message || data.content || "Sorry, I had trouble responding. Please try again!"
@@ -221,7 +225,12 @@ export default function ChatWidget() {
       
     } catch (error) {
       console.error('Chat error:', error)
-      addMessage("Sorry, I had trouble responding. Try again or email support@deum.video", 'agent')
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      if (errorMessage.includes('API key not configured')) {
+        addMessage("Chat is temporarily unavailable. Please email support@deum.video", 'agent')
+      } else {
+        addMessage("Sorry, I had trouble responding. Try again or email support@deum.video", 'agent')
+      }
     }
   }
   
