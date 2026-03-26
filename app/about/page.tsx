@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import ChatWidget from '@/components/ChatWidget'
 
 export default function AboutPage() {
@@ -28,12 +29,18 @@ export default function AboutPage() {
           {/* Founder Story */}
           <div className="mb-16">
             <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
-              {/* Placeholder for founder photo - can add later */}
-              <div className="w-full md:w-48 h-48 bg-[#111111] rounded-2xl flex items-center justify-center text-[#A0A0A0] text-sm flex-shrink-0">
-                <div className="text-center px-4">
-                  <div className="text-4xl mb-2">👋</div>
-                  <div className="text-xs">Elliot Rose</div>
-                  <div className="text-xs opacity-60">Founder of Deum</div>
+              {/* Founder photo */}
+              <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-2xl overflow-hidden">
+                <Image 
+                  src="/images/elliot-founder.jpg" 
+                  alt="Elliot Rose, Founder of Deum" 
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 192px"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm text-white text-xs py-2 px-3">
+                  <div>Elliot Rose</div>
+                  <div className="opacity-70">Founder of Deum</div>
                 </div>
               </div>
               
