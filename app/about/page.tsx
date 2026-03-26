@@ -28,48 +28,47 @@ export default function AboutPage() {
 
           {/* Founder Story */}
           <div className="mb-16">
-            <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
-              {/* Founder photo */}
-              <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-2xl overflow-hidden">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Why I Built Deum</h2>
+            
+            {/* Newspaper-style layout with image float */}
+            <div className="space-y-4 text-lg text-[#A0A0A0] leading-relaxed">
+              {/* Founder photo - floats left on desktop, full width on mobile */}
+              <div className="w-full md:w-80 md:float-left md:mr-8 mb-6 relative rounded-2xl overflow-hidden">
                 <Image 
                   src="/images/elliot-founder.jpg" 
                   alt="Elliot Rose, Founder of Deum" 
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 192px"
+                  width={320}
+                  height={320}
+                  className="object-cover w-full"
+                  sizes="(max-width: 768px) 100vw, 320px"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm text-white text-xs py-2 px-3">
                   <div>Elliot Rose</div>
                   <div className="opacity-70">Founder of Deum</div>
                 </div>
               </div>
-              
-              <div className="flex-1">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Why I Built Deum</h2>
-                <div className="space-y-4 text-lg text-[#A0A0A0] leading-relaxed">
-                  <p>
-                    Deum started with a simple frustration: editing a short video shouldn't take hours.
-                  </p>
-                  <p>
-                    Between work and family life, I needed something that didn't clash with my ADHD. Something fast, simple, and that didn't demand constant decisions.
-                  </p>
-                  <p>
-                    For me, what starts as a "quick edit" easily turns into hours of tweaking. Small decisions stack up. Before you know it, you're deep in the weeds trying to get everything just right.
-                  </p>
-                  <p>
-                    It's not just the time, it's the mental load. Too many choices. Visual distractions. Second-guessing every cut. Losing track of where you were. It adds up fast.
-                  </p>
-                  <p>
-                    Tools like Descript are powerful, but they come with a learning curve and can be overwhelming when focus and time are already limited.
-                  </p>
-                  <p>
-                    I wanted something simpler. Something that removes the friction instead of adding to it.
-                  </p>
-                  <p className="text-white font-medium">
-                    So I built Deum, a tool that does the work for you, so you can get back to what matters.
-                  </p>
-                </div>
-              </div>
+
+              <p>
+                Deum started with a simple frustration: editing a short video shouldn't take hours.
+              </p>
+              <p>
+                Between work and family life, I needed something that didn't clash with my ADHD. Something fast, simple, and that didn't demand constant decisions.
+              </p>
+              <p>
+                For me, what starts as a "quick edit" easily turns into hours of tweaking. Small decisions stack up. Before you know it, you're deep in the weeds trying to get everything just right.
+              </p>
+              <p>
+                It's not just the time, it's the mental load. Too many choices. Visual distractions. Second-guessing every cut. Losing track of where you were. It adds up fast.
+              </p>
+              <p>
+                Tools like Descript are powerful, but they come with a learning curve and can be overwhelming when focus and time are already limited.
+              </p>
+              <p>
+                I wanted something simpler. Something that removes the friction instead of adding to it.
+              </p>
+              <p className="text-white font-medium">
+                So I built Deum, a tool that does the work for you, so you can get back to what matters.
+              </p>
             </div>
 
             <div className="bg-[#111111] p-8 rounded-2xl space-y-4 text-lg text-[#A0A0A0]">
