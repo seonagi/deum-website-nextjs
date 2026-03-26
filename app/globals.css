@@ -38,3 +38,19 @@ body {
 .animate-bounce-subtle {
   animation: bounce-subtle 2s ease-in-out infinite;
 }
+
+@keyframes wobble-rotate {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+
+.animate-wobble-rotate {
+  animation: wobble-rotate 3s ease-in-out infinite;
+}

@@ -42,7 +42,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           {/* ADHD Badge - "stuck on" look, centered above headline */}
           <div className="flex justify-center mb-6">
-            <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg shadow-lg font-bold text-sm border-2 border-orange-400 rotate-[-2deg] animate-bounce-subtle">
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg shadow-lg font-bold text-sm border-2 border-orange-400 animate-wobble-rotate">
               Built for ADHD creators
             </div>
           </div>
