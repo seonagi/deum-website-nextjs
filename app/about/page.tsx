@@ -33,14 +33,14 @@ export default function AboutPage() {
             {/* Newspaper-style layout with image float */}
             <div className="space-y-4 text-lg text-[#A0A0A0] leading-relaxed">
               {/* Founder photo - floats left on desktop, full width on mobile */}
-              <div className="w-full md:w-80 md:float-left md:mr-8 mb-6 rounded-2xl overflow-hidden">
+              <div className="w-full md:w-96 md:float-left md:mr-8 mb-6 rounded-2xl overflow-hidden">
                 <Image 
                   src="/images/elliot-founder-labeled.jpg" 
                   alt="Founder of Deum" 
-                  width={320}
-                  height={320}
+                  width={384}
+                  height={384}
                   className="object-cover w-full"
-                  sizes="(max-width: 768px) 100vw, 320px"
+                  sizes="(max-width: 768px) 100vw, 384px"
                 />
               </div>
 
