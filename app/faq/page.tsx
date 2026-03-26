@@ -106,7 +106,7 @@ export default function FAQPage() {
       </div>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-[#3B82F6] text-white">
+      <footer className="py-12 px-6 bg-[#0A0A0A] border-t border-[#1F1F1F] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>

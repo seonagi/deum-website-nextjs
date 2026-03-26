@@ -146,17 +146,17 @@ export default function AboutPage() {
               share your experience — I'd genuinely love to hear from you.
             </p>
             <a 
-              href="mailto:hello@deum.video" 
+              href="mailto:elliot@deum.video" 
               className="inline-block px-6 py-3 bg-[#3B82F6] text-white rounded-lg font-medium hover:bg-[#2563EB] transition-colors"
             >
-              Email me: hello@deum.video
+              Email me: elliot@deum.video
             </a>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-[#3B82F6] text-white">
+      <footer className="py-12 px-6 bg-[#0A0A0A] border-t border-[#1F1F1F] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
