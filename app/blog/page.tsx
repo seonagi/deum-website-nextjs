@@ -1,0 +1,83 @@
+import Link from 'next/link'
+import ChatWidget from '@/components/ChatWidget'
+
+export default function BlogPage() {
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-40 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-2xl font-bold text-gray-900">deum</Link>
+            <div className="flex items-center gap-8">
+              <Link href="/#how" className="text-gray-600 hover:text-gray-900 transition-colors">How it works</Link>
+              <Link href="/#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</Link>
+              <a href="https://app.deum.video/sign-in" className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:border-gray-400 transition-colors">
+                Sign in
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Blog Content */}
+      <div className="pt-32 pb-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-bold text-gray-900 mb-4">Blog</h1>
+            <p className="text-xl text-gray-600">Tips, guides, and insights for video creators</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">Coming Soon</h2>
+              <p className="text-gray-600 mb-4">
+                We're working on bringing you helpful content about video creation, editing tips, and best practices.
+              </p>
+              <p className="text-sm text-gray-500">Check back soon!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 bg-gray-900 text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <div className="text-2xl font-bold mb-4">deum</div>
+              <p className="text-gray-400 text-sm">Professional video editing,<br />minus the effort.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Product</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/#how" className="block text-gray-400 hover:text-white transition-colors">Features</Link>
+                <Link href="/#pricing" className="block text-gray-400 hover:text-white transition-colors">Pricing</Link>
+                <Link href="/faq" className="block text-gray-400 hover:text-white transition-colors">FAQ</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/about" className="block text-gray-400 hover:text-white transition-colors">About</Link>
+                <Link href="/blog" className="block text-gray-400 hover:text-white transition-colors">Blog</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Legal</h4>
+              <div className="space-y-2 text-sm">
+                <a href="https://app.deum.video/privacy" className="block text-gray-400 hover:text-white transition-colors">Privacy</a>
+                <a href="https://app.deum.video/terms" className="block text-gray-400 hover:text-white transition-colors">Terms</a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+            © 2026 Deum. All rights reserved.
+          </div>
+        </div>
+      </footer>
+
+      <ChatWidget />
+    </main>
+  )
+}

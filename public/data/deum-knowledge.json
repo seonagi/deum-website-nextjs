@@ -1,0 +1,218 @@
+{
+  "_readme": "EDIT THIS FILE to add knowledge to Deum's chat bot. Save and push to deploy.",
+  "_updated": "2026-03-26",
+  
+  "company": {
+    "name": "Deum",
+    "tagline": "Video editing on autopilot",
+    "website": "https://deum.video",
+    "app": "https://app.deum.video",
+    "support_email": "support@deum.video",
+    "founder": "Elliot"
+  },
+
+  "pricing": {
+    "_note": "Keep this in sync with the website!",
+    "plans": {
+      "free": {
+        "price_monthly": "$0",
+        "hours": "1 hour/month",
+        "features": ["Up to 4K quality", "Email notifications", "Email support"]
+      },
+      "hobby": {
+        "price_monthly": "$20",
+        "price_annual": "$15/month (billed $180/year)",
+        "savings_annual": "25%",
+        "hours": "10 hours/month",
+        "features": ["Up to 4K quality", "Priority support"]
+      },
+      "creator": {
+        "price_monthly": "$32",
+        "price_annual": "$23/month (billed $276/year)",
+        "savings_annual": "28%",
+        "hours": "30 hours/month",
+        "features": ["Up to 4K quality", "Priority processing"],
+        "badge": "Most popular"
+      },
+      "business": {
+        "price_monthly": "$60",
+        "price_annual": "$49/month (billed $588/year)",
+        "savings_annual": "18%",
+        "hours": "40 hours/month",
+        "features": ["Up to 4K quality", "Dedicated support"]
+      }
+    },
+    "extra_hours": "$3 per extra hour",
+    "hours_rollover": "No - unused hours reset monthly",
+    "cancel_policy": "Cancel anytime, active until period ends, no refunds"
+  },
+
+  "product": {
+    "how_it_works": [
+      "1. Upload your video (MP4, MOV, AVI, MKV - up to 2GB)",
+      "2. AI identifies and removes filler words (um, uh, er, like)",
+      "3. Audio is polished (loudness normalization, compression)",
+      "4. You get an email when it's ready",
+      "5. Download your clean video"
+    ],
+    "processing_time": "Matches video length - 10 min video = ~10 min processing",
+    "accuracy": "97% with two-stage validation",
+    "max_file_size": "2GB (about 2 hours HD or 4+ hours SD)",
+    "formats_video": ["MP4", "MOV", "AVI", "MKV"],
+    "formats_audio": ["MP3", "WAV", "M4A"],
+    "supports_podcasts": true,
+    "quality": "Up to 4K on all plans"
+  },
+
+  "features": {
+    "filler_removal": {
+      "description": "Automatically removes 'um', 'uh', 'er', 'like' - keeps everything else",
+      "accuracy": "97%",
+      "validation": "Two-stage validation prevents cutting real words"
+    },
+    "audio_polish": {
+      "description": "Loudness normalization and compression",
+      "result": "Broadcast-ready audio quality"
+    },
+    "security": {
+      "encryption": "Encrypted at rest and in transit",
+      "processing": "Isolated cloud environments",
+      "deletion": "Videos auto-deleted after 24 hours",
+      "no_training": "We never train AI on your content",
+      "no_sharing": "Videos are never shared or sold"
+    }
+  },
+
+  "faq": [
+    {
+      "q": "How long does processing take?",
+      "a": "Processing time matches your video length. A 10-minute video takes about 10 minutes to process, including AI transcription, filler detection, and rendering."
+    },
+    {
+      "q": "What file formats are supported?",
+      "a": "All common video formats: MP4, MOV, AVI, MKV. Also audio-only files (MP3, WAV, M4A) for podcast editing."
+    },
+    {
+      "q": "What's the maximum file size?",
+      "a": "2GB - that's enough for about 2 hours of HD video or 4+ hours of standard definition."
+    },
+    {
+      "q": "How accurate is the filler detection?",
+      "a": "97% accuracy. We use a two-stage validation system to prevent cutting real words. We recommend adding b-roll to cover any imperfect transitions."
+    },
+    {
+      "q": "Is my video private and secure?",
+      "a": "Yes! Videos are processed in isolated cloud environments with enterprise-grade security, stored with encryption, automatically deleted after 24 hours, and never shared, sold, or used for training."
+    },
+    {
+      "q": "What happens to my original video?",
+      "a": "Original upload is deleted immediately after processing. The clean video is kept for 24 hours for download, then permanently deleted."
+    },
+    {
+      "q": "Can I preview before downloading?",
+      "a": "Not yet. Automatic removal is what makes us so fast and simple. We recommend trying a short clip first to see the results."
+    },
+    {
+      "q": "What languages are supported?",
+      "a": "English (all accents - US, UK, Australian, etc.). We auto-detect accents. Other languages coming soon."
+    },
+    {
+      "q": "Do unused hours roll over?",
+      "a": "No. Unused hours reset each month and don't carry over. Use them or lose them!"
+    },
+    {
+      "q": "Can I use Deum for podcasts?",
+      "a": "Absolutely! Upload audio-only files (MP3, WAV, M4A) and we'll remove fillers just like video. Perfect for podcast editing."
+    },
+    {
+      "q": "Can I cancel my subscription?",
+      "a": "Yes, cancel anytime. Your subscription remains active until the end of your billing period. No refunds for unused time."
+    },
+    {
+      "q": "I found a bug!",
+      "a": "Email hello@deum.video with details. If confirmed, you get 3 free processing hours as a thank you!"
+    }
+  ],
+
+  "vs_competitors": {
+    "descript": {
+      "speed": "10x faster - Deum auto-processes, Descript requires 90+ min of manual editing",
+      "simplicity": "Upload → Download vs. complex timeline and script editing",
+      "customer_quote": "Saved me 2 hours on every video. Descript without the confusion. - Aiva Rose"
+    }
+  },
+
+  "value_props": [
+    "10x faster than manual editing",
+    "97% accuracy rate - surgical precision",
+    "~10 minute average render time",
+    "Upload, go grab coffee, get professional results",
+    "Private & secure - deleted after 24 hours"
+  ],
+
+  "common_objections": {
+    "too_expensive": "Hobby is $20/month for 10 hours - that's $2 per video hour. An editor costs $50-100/hour. We're 25-50x cheaper!",
+    "sounds_robotic": "97% accuracy keeps natural speech. Customers say it sounds like them, just more polished.",
+    "learning_curve": "Dead simple: Upload, wait, download. No timeline, no scrubbing, no editing software needed.",
+    "want_cheaper": "Free plan gives you 1 hour/month to try. Annual plans save 25-28%. Extra hours are $3 each."
+  },
+
+  "team": {
+    "_note": "These are the virtual team members who chat with users",
+    "enabled": true,
+    "members": [
+      {
+        "id": "naveed",
+        "name": "Naveed",
+        "role": "Support",
+        "style": "Patient explainer, technical but approachable",
+        "phrases": ["Let me walk you through that", "No worries, happy to explain"]
+      },
+      {
+        "id": "sarah",
+        "name": "Sarah",
+        "role": "Product",
+        "style": "Enthusiastic about features, founder's right hand",
+        "phrases": ["I love this question!", "Elliot's really excited about that feature"],
+        "can_escalate_to_founder": true
+      },
+      {
+        "id": "nina",
+        "name": "Nina",
+        "role": "Customer team",
+        "style": "Warm and empathetic, outcome-focused",
+        "phrases": ["What are you hoping to achieve?", "Let's figure out what works for you"]
+      },
+      {
+        "id": "matt",
+        "name": "Matt",
+        "role": "Pricing",
+        "style": "Direct and efficient, no BS",
+        "phrases": ["Here's what makes sense for your setup", "Straightforward answer:"]
+      },
+      {
+        "id": "lexi",
+        "name": "Lexi",
+        "role": "Content",
+        "style": "Creative and enthusiastic, example-driven",
+        "phrases": ["Oh! I love this question!", "Here's a cool example"]
+      }
+    ],
+    "founder_escalation": "For complex questions, contact Elliot at support@deum.video"
+  },
+
+  "custom_knowledge": {
+    "_note": "ADD YOUR CUSTOM KNOWLEDGE HERE - anything the bot should know",
+    "promo_codes": {
+      "CREATOR10": "10 free processing hours for new users"
+    },
+    "recent_updates": [
+      "Now supporting podcast audio files (MP3, WAV, M4A)",
+      "Processing speed improved - most videos under 10 minutes"
+    ],
+    "coming_soon": [
+      "Additional language support",
+      "Preview before download"
+    ]
+  }
+}
