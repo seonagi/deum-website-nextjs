@@ -360,25 +360,27 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
         </div>
       )}
       
-      {/* Chat Bubble */}
-      {!isOpen && (
-        <button
-          onClick={() => {
-            setIsOpen(true)
-            setShowTooltip(false)
-            if (!hasShownIntro && knowledge && agent) showAgentIntro()
-          }}
-          className="fixed bottom-6 right-6 z-[9999] bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group relative"
-          aria-label="Open chat"
-          style={{ visibility: 'visible', display: 'block' }}
-        >
-          <MessageSquare className="w-6 h-6" />
-          <span className="absolute top-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
-          <span className="absolute -bottom-8 right-0 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-            Chat with {displayAgent.name}
-          </span>
-        </button>
-      )}
+      {/* Chat Bubble - ALWAYS SHOW FOR DEBUG */}
+      <button
+        onClick={() => {
+          setIsOpen(true)
+          setShowTooltip(false)
+          if (!hasShownIntro && knowledge && agent) showAgentIntro()
+        }}
+        className="fixed bottom-6 right-6 z-[9999] bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group relative"
+        aria-label="Open chat"
+        style={{ 
+          visibility: 'visible', 
+          display: isOpen ? 'none' : 'block',
+          pointerEvents: 'auto'
+        }}
+      >
+        <MessageSquare className="w-6 h-6" />
+        <span className="absolute top-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
+        <span className="absolute -bottom-8 right-0 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+          Chat with {displayAgent.name}
+        </span>
+      </button>
       
       {/* Chat Window */}
       {isOpen && knowledge && agent && (
