@@ -59,33 +59,18 @@ export default function ChatWidget() {
       .catch(err => console.error('Failed to load knowledge:', err))
   }, [])
   
-  // Assign team member (random sticky)
+  // Assign team member (truly random each time)
   const assignTeamMember = (kb: KnowledgeBase) => {
     if (!kb.team?.enabled || !kb.team?.members?.length) {
       setAgent({ id: 'default', name: 'Support', role: 'Support' })
       return
     }
     
-    // Check for existing assignment
-    const storedAgentId = localStorage.getItem('deum_agent_id')
-    if (storedAgentId) {
-      const found = kb.team.members.find(m => m.id === storedAgentId)
-      if (found) {
-        setAgent(found)
-        return
-      }
-    }
-    
-    // Random assignment (sticky)
-    const visitorId = localStorage.getItem('deum_visitor_id') || `v_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-    localStorage.setItem('deum_visitor_id', visitorId)
-    
-    const hash = visitorId.split('').reduce((a, c) => a + c.charCodeAt(0), 0)
-    const index = hash % kb.team.members.length
-    const assigned = kb.team.members[index]
+    // Truly random assignment each session
+    const randomIndex = Math.floor(Math.random() * kb.team.members.length)
+    const assigned = kb.team.members[randomIndex]
     
     setAgent(assigned)
-    localStorage.setItem('deum_agent_id', assigned.id)
   }
   
   // Get time-based greeting
@@ -130,18 +115,25 @@ export default function ChatWidget() {
     return () => clearTimeout(timer)
   }, [agent])
   
-  // Show agent intro with countdown
-  const showAgentIntro = () => {
-    if (hasShownIntro) return
+  // Show agent assignment theater (triggered after user's first message)
+  const showAgentAssignment = async (userQuestion: string) => {
+    if (hasShownIntro || !agent) return
     setHasShownIntro(true)
     
-    // Show countdown: "Agent will be with you in Xs"
-    const waitTime = 5 + Math.floor(Math.random() * 4) // 5-8 seconds
-    setCountdown(waitTime)
+    // Step 1: "Finding available agent..."
     setIsWaitingForAgent(true)
-    setWaitMessage(`${agent?.name || 'Our team'} is just finishing up with someone else`)
+    setWaitMessage('Finding available agent...')
+    await new Promise(resolve => setTimeout(resolve, 2000))
     
-    // Countdown timer
+    // Step 2: "You've been assigned to [Name]"
+    setWaitMessage(`You've been assigned to ${agent.name}`)
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    
+    // Step 3: Countdown (9-25 seconds)
+    const waitTime = 9 + Math.floor(Math.random() * 17) // 9-25 seconds
+    setCountdown(waitTime)
+    setWaitMessage(`${agent.name} is helping another customer`)
+    
     let remaining = waitTime
     const countdownInterval = setInterval(() => {
       remaining--
@@ -151,47 +143,39 @@ export default function ChatWidget() {
       }
     }, 1000)
     
-    // After countdown, show typing indicator then greeting
-    setTimeout(() => {
+    // Step 4: After countdown, agent intro
+    setTimeout(async () => {
       setIsWaitingForAgent(false)
       setCountdown(0)
       
-      const greeting = getTimeBasedGreeting()
-      
-      // Show typing indicator
+      // Agent introduction
+      const intro = `Hi, I'm ${agent.name} from ${agent.role} 👋`
       setIsTyping(true)
-      setTimeout(() => {
-        setIsTyping(false)
-        
-        // Add greeting message
-        setMessages([{
-          id: '1',
-          text: greeting,
-          sender: 'agent',
-          timestamp: new Date()
-        }])
-        
-        // Track visit
-        const visitCount = parseInt(localStorage.getItem('deum_visit_count') || '0')
-        localStorage.setItem('deum_visit_count', (visitCount + 1).toString())
-      }, greeting.length * 30) // Slow typing effect
+      await new Promise(resolve => setTimeout(resolve, intro.length * 40))
+      setIsTyping(false)
+      
+      addMessage(intro, 'agent')
+      
+      // Brief pause before response
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      // Now respond to their actual question
+      handleAgentResponse(userQuestion)
     }, waitTime * 1000)
   }
   
-  // Auto-open after 10 seconds for first-time visitors (desktop only)
-  useEffect(() => {
-    const hasVisited = localStorage.getItem('deum-chat-visited')
-    const isMobile = window.innerWidth < 768
-    if (!hasVisited && knowledge && agent && !isMobile) {
-      const timer = setTimeout(() => {
-        setIsOpen(true)
-        setShowTooltip(false)
-        showAgentIntro()
-        localStorage.setItem('deum-chat-visited', 'true')
-      }, 10000)
-      return () => clearTimeout(timer)
+  // Helper to add message
+  const addMessage = (text: string, sender: 'user' | 'agent') => {
+    const message: Message = {
+      id: Date.now().toString() + Math.random(),
+      text,
+      sender,
+      timestamp: new Date()
     }
-  }, [knowledge, agent])
+    setMessages(prev => [...prev, message])
+  }
+  
+  // No auto-open - user initiates conversation
   
   // Scroll to bottom
   useEffect(() => {
@@ -216,26 +200,26 @@ export default function ChatWidget() {
     })
   }
   
-  // Add message helper
-  const addMessage = (text: string, sender: 'user' | 'agent') => {
-    const message: Message = {
-      id: Date.now().toString() + Math.random(),
-      text,
-      sender,
-      timestamp: new Date()
-    }
-    setMessages(prev => [...prev, message])
-    return message
-  }
-  
   // Send user message
   const handleSend = async () => {
     if (!inputValue.trim() || !knowledge) return
     
-    addMessage(inputValue, 'user')
     const userInput = inputValue
+    addMessage(userInput, 'user')
     setInputValue('')
     
+    // If this is first message, trigger agent assignment theater
+    if (!hasShownIntro) {
+      showAgentAssignment(userInput)
+      return
+    }
+    
+    // Otherwise normal response flow
+    handleAgentResponse(userInput)
+  }
+  
+  // Handle agent response (separated for reuse)
+  const handleAgentResponse = async (userInput: string) => {
     // Thinking delay
     await simulateTyping(userInput.length)
     
@@ -344,7 +328,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
             </div>
             <div className="flex-1">
               <p className="text-xs font-medium text-gray-900 leading-snug">
-                {agent.name} is here to answer your questions - just click the icon
+                Our team is here to answer your questions - just click the icon
               </p>
             </div>
             <button
@@ -363,9 +347,6 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
           onClick={() => {
             setIsOpen(true)
             setShowTooltip(false)
-            if (!hasShownIntro && messages.length === 0) {
-              showAgentIntro()
-            }
           }}
           className="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
           aria-label="Open chat"
