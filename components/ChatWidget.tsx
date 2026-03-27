@@ -17,6 +17,7 @@ interface TeamMember {
   style?: string
   phrases?: string[]
   can_escalate_to_founder?: boolean
+  avatar?: string
 }
 
 interface KnowledgeBase {
