@@ -404,6 +404,7 @@ GOOD (if they ask about accuracy):
 "wanna know how we handle imperfections?"
 
 COMPANY: ${k.company.name} - ${k.company.tagline}
+Location: Based in the UK
 Website: ${k.company.website}
 
 PRICING:
