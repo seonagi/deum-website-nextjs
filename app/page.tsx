@@ -17,6 +17,9 @@ export default function Home() {
               <a href="#pricing" className="text-sm text-[#A0A0A0] hover:text-white transition-colors">
                 Pricing
               </a>
+              <Link href="/faq" className="text-sm text-[#A0A0A0] hover:text-white transition-colors">
+                FAQ
+              </Link>
               <Link href="/about" className="text-sm text-[#A0A0A0] hover:text-white transition-colors">
                 About
               </Link>
