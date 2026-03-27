@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import ChatWidget from '@/components/ChatWidget'
 
 export default function BlogPage() {
@@ -105,12 +106,14 @@ export default function BlogPage() {
                 <Link href={`/blog/${article.slug}`} className="block">
                   {/* Article Image */}
                   <div className="aspect-video bg-[#1F1F1F] relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#3B82F6]/20 to-[#1F1F1F] group-hover:from-[#3B82F6]/30 transition-all"></div>
-                    <div className="absolute inset-0 flex items-center justify-center text-[#A0A0A0]">
-                      <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                      </svg>
-                    </div>
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   </div>
 
                   {/* Article Content */}
