@@ -4,11 +4,24 @@ import Image from 'next/image'
 import ChatWidget from '@/components/ChatWidget'
 import { getArticleBySlug, getAllArticleSlugs } from '@/lib/articles'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+
+export const revalidate = false // Static generation only
 
 export async function generateStaticParams() {
   return getAllArticleSlugs().map((slug) => ({
     slug,
   }))
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const article = getArticleBySlug(params.slug)
+  if (!article) return {}
+  
+  return {
+    title: article.title,
+    description: article.description,
+  }
 }
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
