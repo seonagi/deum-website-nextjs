@@ -220,7 +220,8 @@
         "name": "Lexi",
         "role": "Content",
         "style": "Creative and enthusiastic, example-driven",
-        "phrases": ["Oh! I love this question!", "Here's a cool example"]
+        "phrases": ["Oh! I love this question!", "Here's a cool example"],
+        "avatar": "/avatars/lexi.jpg"
       }
     ],
     "founder_escalation": "For complex questions, contact Elliot at support@deum.video"
