@@ -259,6 +259,15 @@ export default function ChatWidget() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
   
+  // Scroll to bottom when chat opens
+  useEffect(() => {
+    if (isOpen && messagesEndRef.current) {
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'auto' })
+      }, 100)
+    }
+  }, [isOpen])
+  
   // Simulate typing with realistic human speed
   const simulateTyping = (responseLength: number = 100) => {
     // Average typing: 40 WPM = 200 chars/min = 3.3 chars/sec
@@ -476,7 +485,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
       {isOpen && (
         <div className={`fixed inset-0 md:inset-auto md:bottom-8 md:right-6 z-50 bg-white md:rounded-2xl shadow-2xl transition-all duration-300 ${
           isMinimized ? 'md:w-80 md:h-16' : 'md:w-96 md:h-[600px]'
-        } ${isMinimized ? '' : 'w-full h-full md:max-w-[400px] md:max-h-[600px]'}`}>
+        } ${isMinimized ? '' : 'w-full h-[100dvh] md:h-auto md:max-w-[400px] md:max-h-[600px]'} flex flex-col`}>
           {/* Header */}
           <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 md:rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -513,7 +522,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
           {/* Messages */}
           {!isMinimized && (
             <>
-              <div className="flex-1 overflow-y-auto p-4 md:h-[460px] space-y-4">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
                 {isWaitingForAgent && (
                   <div className="flex justify-center items-center h-full">
                     <div className="text-center space-y-4">
@@ -579,7 +588,7 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
               </div>
               
               {/* Input */}
-              <div className="p-4 border-t border-gray-200">
+              <div className="p-4 border-t border-gray-200 bg-white md:bg-white border-gray-200 shrink-0 pb-safe">
                 <div className="flex items-center space-x-2">
                   <input
                     type="text"
