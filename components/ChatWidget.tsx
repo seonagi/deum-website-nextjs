@@ -492,9 +492,13 @@ Remember: Short, warm, helpful responses. You're a real person helping a real cu
           <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 md:rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <User className="w-6 h-6" />
-                </div>
+                {agent?.avatar ? (
+                  <img src={agent.avatar} alt={agent.name} className="w-10 h-10 rounded-full object-cover border-2 border-white" />
+                ) : (
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <User className="w-6 h-6" />
+                  </div>
+                )}
                 <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white" />
               </div>
               <div>

@@ -187,7 +187,8 @@
         "name": "Naveed",
         "role": "Support",
         "style": "Patient explainer, technical but approachable",
-        "phrases": ["Let me walk you through that", "No worries, happy to explain"]
+        "phrases": ["Let me walk you through that", "No worries, happy to explain"],
+        "avatar": "/avatars/naveed.jpg"
       },
       {
         "id": "sarah",
@@ -195,20 +196,23 @@
         "role": "Product",
         "style": "Enthusiastic about features, founder's right hand",
         "phrases": ["I love this question!", "Elliot's really excited about that feature"],
-        "can_escalate_to_founder": true
+        "can_escalate_to_founder": true,
+        "avatar": "/avatars/sarah.jpg"
       },
       {
         "id": "nina",
         "name": "Nina",
         "role": "Customer team",
         "style": "Warm and empathetic, outcome-focused",
-        "phrases": ["What are you hoping to achieve?", "Let's figure out what works for you"]
+        "phrases": ["What are you hoping to achieve?", "Let's figure out what works for you"],
+        "avatar": "/avatars/nina.jpg"
       },
       {
         "id": "matt",
         "name": "Matt",
         "role": "Pricing",
         "style": "Direct and efficient, no BS",
+        "avatar": "/avatars/matt.jpg",
         "phrases": ["Here's what makes sense for your setup", "Straightforward answer:"]
       },
       {
