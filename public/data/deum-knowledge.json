@@ -224,8 +224,18 @@
 
   "custom_knowledge": {
     "_note": "ADD YOUR CUSTOM KNOWLEDGE HERE - anything the bot should know",
-    "promo_codes": {
-      "CREATOR10": "10 free processing hours for new users"
+    "special_offers": {
+      "note": "NO public promo codes. Only mention these offers:"
+    },
+    "free_offer": {
+      "description": "Sign up for free and get 1 free hour every month forever",
+      "who_can_mention": "Always offer this - it's public",
+      "how_to_mention": "If asked about trial or free option, mention the free plan with 1 hour/month forever"
+    },
+    "trial_for_special_people": {
+      "description": "Extended trial only for people Elliot personally sends codes to",
+      "who_can_mention": "NEVER mention creator10 or any codes publicly",
+      "if_asked_about_codes": "Don't mention codes exist. Instead, say: 'For extended trials, customers can email elliot@deum.video'"
     },
     "recent_updates": [
       "Now supporting podcast audio files (MP3, WAV, M4A)",
