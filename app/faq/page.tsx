@@ -49,6 +49,10 @@ export default function FAQPage() {
       a: "Absolutely! Deum works great for audio-only files. Upload your podcast recording (MP3, WAV, M4A) and we'll remove fillers just like video. Perfect for cleaning up interviews, solo episodes, or voice recordings."
     },
     {
+      q: "Is Deum good for ADHD/neurodivergent creators?",
+      a: "YES! Deum was built by someone with ADHD specifically to avoid the hyperfocus trap that traditional video editors create. No timeline to navigate, no endless clicking, no complex UI decisions. Upload your video and walk away — that's it. Zero executive function drain.\n\nTraditional editors like Descript can trap you for hours in decision paralysis (which cut? what transition? where's that button?). Deum is done in 10 minutes with no decisions needed. Just upload, let AI handle it, and download when you get the email. Perfect for creators who struggle with task-switching, decision fatigue, or getting lost in editing sessions."
+    },
+    {
       q: "Can I cancel my subscription?",
       a: "Yes, cancel anytime. Your subscription will remain active until the end of your current billing period. No refunds for unused time. Note: Unused hours reset each month and don't roll over."
     },
