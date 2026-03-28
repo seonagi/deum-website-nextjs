@@ -1,12 +1,26 @@
+'use client'
+
+import { useState } from 'react'
 import ChatWidget from '@/components/ChatWidget'
 import Navigation from '@/components/Navigation'
 import PricingSection from '@/components/PricingSection'
+import VideoModal from '@/components/VideoModal'
 import Link from 'next/link'
 
 export default function Home() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+
   return (
     <main className="min-h-screen bg-[#0A0A0A]">
       <Navigation />
+      
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        videoUrl="/demo/deum-upload-tutorial.mp4"
+        title="How to Use Deum"
+      />
 
       {/* Hero */}
       <section className="pt-32 pb-20 px-6">
@@ -35,9 +49,12 @@ export default function Home() {
             >
               Try 1 video free
             </a>
-            <a href="#demo" className="px-8 py-4 text-[#A0A0A0] hover:text-white transition-colors">
+            <button 
+              onClick={() => setIsVideoOpen(true)}
+              className="px-8 py-4 text-[#A0A0A0] hover:text-white transition-colors"
+            >
               See demo →
-            </a>
+            </button>
           </div>
           
           {/* Stats */}
