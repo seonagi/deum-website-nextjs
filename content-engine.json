@@ -1,0 +1,17 @@
+{
+  "project_name": "deum.video",
+  "target_audience": "Video creators, YouTubers, podcasters, and content creators who want to edit faster",
+  "blog_dir": "app/blog",
+  "image_dir": "public/images/blog",
+  "url": "https://deum.video",
+  "topics": [
+    "video editing AI tools 2026",
+    "YouTube content creator productivity",
+    "podcast editing software tools"
+  ],
+  "voice": "Energetic but not hype-y. Creator-to-creator tone. Practical and specific — use real numbers, real workflows, real frustrations creators have. Short paragraphs. Conversational. Like a YouTuber writing for other YouTubers.",
+  "author": "deum.video",
+  "cta": "deum removes filler words, ums, and silences from your videos automatically — 97% accuracy, processes in real-time. Try it free at deum.video",
+  "image_query": "video creator podcast studio content creation",
+  "min_days_between_posts": 3
+}
