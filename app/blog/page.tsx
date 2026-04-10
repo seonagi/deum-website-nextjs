@@ -2,9 +2,21 @@ import Navigation from '@/components/Navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import ChatWidget from '@/components/ChatWidget'
+import { getMdPosts } from '@/lib/mdBlog'
+
+export const dynamic = 'force-dynamic'
 
 export default function BlogPage() {
-  const articles = [
+  const mdPosts = getMdPosts().map(p => ({
+    title: p.title,
+    category: 'Video Editing',
+    description: p.description,
+    slug: p.slug,
+    image: p.image,
+    date: new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+  }))
+
+  const hardcodedArticles = [
     {
       title: "Why Filler Words Make You Sound Unprofessional",
       category: "Content Creation",
@@ -86,6 +98,8 @@ export default function BlogPage() {
       date: "February 20, 2026"
     }
   ]
+
+  const articles = [...mdPosts, ...hardcodedArticles]
 
   return (
     <main className="min-h-screen bg-[#0A0A0A]">
