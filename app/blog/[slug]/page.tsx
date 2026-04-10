@@ -10,8 +10,11 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
+import { fileURLToPath } from 'url'
 
-const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const BLOG_DIR = path.join(__dirname, '..', '..', '..', 'content', 'blog')
 
 async function getPost(slug: string) {
   const filePath = path.join(BLOG_DIR, `${slug}.md`)
@@ -37,8 +40,9 @@ export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPost(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getPost(slug)
   if (!post) return {}
   return {
     title: `${post.title} — deum.video`,
@@ -47,8 +51,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function MdBlogPost({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug)
+export default async function MdBlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getPost(slug)
   if (!post) notFound()
 
   const formattedDate = post.date

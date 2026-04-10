@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { fileURLToPath } from 'url'
 
 export interface MdPost {
   slug: string
@@ -12,7 +13,10 @@ export interface MdPost {
   content: string
 }
 
-const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
+// Use __dirname-relative path so SSG workers find the files regardless of cwd
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const BLOG_DIR = path.join(__dirname, '..', 'content', 'blog')
 
 export function getMdPosts(): Omit<MdPost, 'content'>[] {
   if (!fs.existsSync(BLOG_DIR)) return []
