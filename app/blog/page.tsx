@@ -4,10 +4,8 @@ import Image from 'next/image'
 import ChatWidget from '@/components/ChatWidget'
 import { getMdPosts } from '@/lib/mdBlog'
 
-export const dynamic = 'force-dynamic'
-
 export default function BlogPage() {
-  const mdPosts = getMdPosts().map(p => ({
+  const articles = getMdPosts().map(p => ({
     title: p.title,
     category: 'Video Editing',
     description: p.description,
@@ -15,91 +13,6 @@ export default function BlogPage() {
     image: p.image,
     date: new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
   }))
-
-  const hardcodedArticles = [
-    {
-      title: "Why Filler Words Make You Sound Unprofessional",
-      category: "Content Creation",
-      description: "The science behind verbal fillers and how they impact viewer retention. Learn what modern audiences expect from video content.",
-      slug: "filler-words",
-      image: "/images/article-6.jpg",
-      date: "March 18, 2026"
-    },
-    {
-      title: "The Content Creator's Guide to Editing Efficiency",
-      category: "Productivity",
-      description: "Time-saving workflows and AI-powered editing trends that help you focus on content, not timelines.",
-      slug: "editing-efficiency",
-      image: "/images/article-7.jpg",
-      date: "March 18, 2026"
-    },
-    {
-      title: "Common YouTube Mistakes That Kill Your Growth",
-      category: "Strategy",
-      description: "Avoid pitfalls that thousands of creators fall into. Master the algorithm with proven strategies.",
-      slug: "youtube-mistakes",
-      image: "/images/article-8.jpg",
-      date: "March 10, 2026"
-    },
-    {
-      title: "The Psychology of Watch Time Retention",
-      category: "Content Strategy",
-      description: "Why the first 30 seconds matter most and how professional-sounding content keeps viewers engaged.",
-      slug: "watch-time-psychology",
-      image: "/images/article-4.jpg",
-      date: "March 8, 2026"
-    },
-    {
-      title: "What Modern Viewers Expect from Video Content",
-      category: "Audience",
-      description: "Production quality standards are rising. Here's how to meet viewer expectations without breaking the bank.",
-      slug: "viewer-expectations",
-      image: "/images/article-10.jpg",
-      date: "March 5, 2026"
-    },
-    {
-      title: "Creator Mistakes That Sabotage Video Performance",
-      category: "Best Practices",
-      description: "Common pitfalls in video production and editing that hurt engagement and how to avoid them.",
-      slug: "creator-mistakes",
-      image: "/images/article-3.jpg",
-      date: "March 3, 2026"
-    },
-    {
-      title: "How to Make Professional-Looking Videos Without a Crew",
-      category: "Production",
-      description: "Solo creator strategies for achieving cinematic quality through smart editing and AI tools.",
-      slug: "professional-videos",
-      image: "/images/article-9.jpg",
-      date: "February 28, 2026"
-    },
-    {
-      title: "Why AI Content Creation Will Replace Traditional Editing",
-      category: "Technology",
-      description: "The shift from manual timeline editing to AI-powered workflows and what it means for creators.",
-      slug: "ai-content-creation",
-      image: "/images/article-1.jpg",
-      date: "February 25, 2026"
-    },
-    {
-      title: "The Science of Scripting Videos That Go Viral",
-      category: "Scripting",
-      description: "Hook formulas, retention mechanics, and pacing strategies backed by data from successful creators.",
-      slug: "viral-psychology",
-      image: "/images/article-5.jpg",
-      date: "February 22, 2026"
-    },
-    {
-      title: "Platform-Specific Optimization for Maximum Reach",
-      category: "Distribution",
-      description: "YouTube vs TikTok vs Instagram: tailoring your content strategy for each platform's algorithm.",
-      slug: "platform-optimization",
-      image: "/images/article-2.jpg",
-      date: "February 20, 2026"
-    }
-  ]
-
-  const articles = [...mdPosts, ...hardcodedArticles]
 
   return (
     <main className="min-h-screen bg-[#0A0A0A]">
@@ -151,13 +64,6 @@ export default function BlogPage() {
                 </Link>
               </article>
             ))}
-          </div>
-
-          {/* Coming Soon Note */}
-          <div className="mt-16 text-center">
-            <p className="text-[#A0A0A0] text-sm">
-              Full articles coming soon. We're migrating our blog content to the new platform.
-            </p>
           </div>
         </div>
       </div>

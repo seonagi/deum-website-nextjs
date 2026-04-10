@@ -10,14 +10,10 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
-import { fileURLToPath } from 'url'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const BLOG_DIR = path.join(__dirname, '..', '..', '..', 'content', 'blog')
 
 async function getPost(slug: string) {
-  const filePath = path.join(BLOG_DIR, `${slug}.md`)
+  const blogDir = path.join(process.cwd(), 'content', 'blog')
+  const filePath = path.join(blogDir, `${slug}.md`)
   if (!fs.existsSync(filePath)) return null
 
   const raw = fs.readFileSync(filePath, 'utf-8')
@@ -36,8 +32,7 @@ async function getPost(slug: string) {
 }
 
 export async function generateStaticParams() {
-  const posts = getMdPosts()
-  return posts.map((p) => ({ slug: p.slug }))
+  return getMdPosts().map(p => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -51,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-export default async function MdBlogPost({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = await getPost(slug)
   if (!post) notFound()
@@ -68,7 +63,7 @@ export default async function MdBlogPost({ params }: { params: Promise<{ slug: s
         <div className="max-w-3xl mx-auto">
 
           <Link href="/blog" className="text-[#3B82F6] text-sm hover:underline mb-8 inline-block">
-            ← Back to blog
+            &larr; Back to blog
           </Link>
 
           <div className="mb-8">

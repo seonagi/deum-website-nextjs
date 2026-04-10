@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { fileURLToPath } from 'url'
 
 export interface MdPost {
   slug: string
@@ -13,19 +12,15 @@ export interface MdPost {
   content: string
 }
 
-// Use __dirname-relative path so SSG workers find the files regardless of cwd
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const BLOG_DIR = path.join(__dirname, '..', 'content', 'blog')
-
 export function getMdPosts(): Omit<MdPost, 'content'>[] {
-  if (!fs.existsSync(BLOG_DIR)) return []
+  const blogDir = path.join(process.cwd(), 'content', 'blog')
+  if (!fs.existsSync(blogDir)) return []
 
-  const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith('.md'))
+  const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'))
 
-  const posts = files.map((filename) => {
+  const posts = files.map(filename => {
     const slug = filename.replace(/\.md$/, '')
-    const raw = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf-8')
+    const raw = fs.readFileSync(path.join(blogDir, filename), 'utf-8')
     const { data } = matter(raw)
     return {
       slug,
@@ -41,7 +36,8 @@ export function getMdPosts(): Omit<MdPost, 'content'>[] {
 }
 
 export function getMdPost(slug: string): MdPost | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.md`)
+  const blogDir = path.join(process.cwd(), 'content', 'blog')
+  const filePath = path.join(blogDir, `${slug}.md`)
   if (!fs.existsSync(filePath)) return null
 
   const raw = fs.readFileSync(filePath, 'utf-8')
