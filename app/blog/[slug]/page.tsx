@@ -87,19 +87,29 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             />
           </div>
 
+          <style>{`
+            .blog-content p { color: #C0C0C0; line-height: 1.85; margin-bottom: 1.5rem; font-size: 1.0625rem; }
+            .blog-content h2 { color: #fff; font-size: 1.625rem; font-weight: 600; margin-top: 2.75rem; margin-bottom: 1rem; line-height: 1.3; }
+            .blog-content h3 { color: #fff; font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; line-height: 1.35; }
+            .blog-content h4 { color: #fff; font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+            .blog-content ul, .blog-content ol { color: #C0C0C0; margin: 1.5rem 0; padding-left: 1.75rem; }
+            .blog-content ul { list-style-type: disc; }
+            .blog-content ol { list-style-type: decimal; }
+            .blog-content li { margin-bottom: 0.5rem; line-height: 1.75; }
+            .blog-content a { color: #3B82F6; text-decoration: none; }
+            .blog-content a:hover { text-decoration: underline; }
+            .blog-content strong { color: #fff; font-weight: 600; }
+            .blog-content em { color: #A0A0A0; }
+            .blog-content blockquote { border-left: 4px solid #3B82F6; padding: 0.75rem 1.5rem; margin: 2rem 0; color: #A0A0A0; font-style: italic; background: #111; border-radius: 0 0.5rem 0.5rem 0; }
+            .blog-content blockquote p { margin-bottom: 0; }
+            .blog-content code { color: #3B82F6; background: #1F1F1F; padding: 0.15em 0.4em; border-radius: 0.25rem; font-size: 0.9em; }
+            .blog-content pre { background: #111; border: 1px solid #1F1F1F; border-radius: 0.5rem; padding: 1.25rem; margin: 1.5rem 0; overflow-x: auto; }
+            .blog-content pre code { background: none; padding: 0; color: #C0C0C0; }
+            .blog-content hr { border: none; border-top: 1px solid #1F1F1F; margin: 2.5rem 0; }
+            .blog-content img { border-radius: 0.5rem; margin: 1.5rem 0; max-width: 100%; }
+          `}</style>
           <div
-            className="prose prose-invert prose-lg max-w-none
-              prose-headings:text-white prose-headings:font-semibold prose-headings:mt-10 prose-headings:mb-4
-              prose-h2:text-2xl prose-h2:md:text-3xl
-              prose-h3:text-xl
-              prose-p:text-[#C0C0C0] prose-p:leading-[1.85] prose-p:mb-6
-              prose-a:text-[#3B82F6] prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-white
-              prose-blockquote:border-l-4 prose-blockquote:border-[#3B82F6] prose-blockquote:text-[#A0A0A0] prose-blockquote:pl-6 prose-blockquote:my-8 prose-blockquote:italic
-              prose-code:text-[#3B82F6] prose-code:bg-[#1F1F1F] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-              prose-li:text-[#C0C0C0] prose-li:mb-2 prose-li:leading-relaxed
-              prose-ul:my-6 prose-ol:my-6
-              prose-hr:border-[#1F1F1F] prose-hr:my-10"
+            className="blog-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
 
