@@ -89,13 +89,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
           <div
             className="prose prose-invert prose-lg max-w-none
-              prose-headings:text-white prose-headings:font-semibold
-              prose-p:text-[#C0C0C0] prose-p:leading-relaxed
+              prose-headings:text-white prose-headings:font-semibold prose-headings:mt-10 prose-headings:mb-4
+              prose-h2:text-2xl prose-h2:md:text-3xl
+              prose-h3:text-xl
+              prose-p:text-[#C0C0C0] prose-p:leading-[1.85] prose-p:mb-6
               prose-a:text-[#3B82F6] prose-a:no-underline hover:prose-a:underline
               prose-strong:text-white
-              prose-blockquote:border-l-[#3B82F6] prose-blockquote:text-[#A0A0A0]
-              prose-code:text-[#3B82F6] prose-code:bg-[#1F1F1F] prose-code:px-1 prose-code:rounded
-              prose-li:text-[#C0C0C0]"
+              prose-blockquote:border-l-4 prose-blockquote:border-[#3B82F6] prose-blockquote:text-[#A0A0A0] prose-blockquote:pl-6 prose-blockquote:my-8 prose-blockquote:italic
+              prose-code:text-[#3B82F6] prose-code:bg-[#1F1F1F] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+              prose-li:text-[#C0C0C0] prose-li:mb-2 prose-li:leading-relaxed
+              prose-ul:my-6 prose-ol:my-6
+              prose-hr:border-[#1F1F1F] prose-hr:my-10"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
 
