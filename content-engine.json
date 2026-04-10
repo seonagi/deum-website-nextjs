@@ -1,7 +1,7 @@
 {
   "project_name": "deum.video",
   "target_audience": "Video creators, YouTubers, podcasters, and content creators who want to edit faster",
-  "blog_dir": "app/blog",
+  "blog_dir": "content/blog",
   "image_dir": "public/images/blog",
   "url": "https://deum.video",
   "topics": [

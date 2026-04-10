@@ -11,7 +11,7 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
 
-const BLOG_DIR = path.join(process.cwd(), 'app', 'blog')
+const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
 async function getPost(slug: string) {
   const filePath = path.join(BLOG_DIR, `${slug}.md`)

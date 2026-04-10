@@ -12,7 +12,7 @@ export interface MdPost {
   content: string
 }
 
-const BLOG_DIR = path.join(process.cwd(), 'app', 'blog')
+const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
 export function getMdPosts(): Omit<MdPost, 'content'>[] {
   if (!fs.existsSync(BLOG_DIR)) return []
