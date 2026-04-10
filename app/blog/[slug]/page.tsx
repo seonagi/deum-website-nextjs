@@ -15,14 +15,6 @@ const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
 async function getPost(slug: string) {
   const filePath = path.join(BLOG_DIR, `${slug}.md`)
-  console.log('[blog-slug] cwd:', process.cwd())
-  console.log('[blog-slug] filePath:', filePath)
-  console.log('[blog-slug] exists:', fs.existsSync(filePath))
-  try {
-    console.log('[blog-slug] content dir contents:', fs.readdirSync(path.join(process.cwd(), 'content', 'blog')))
-  } catch(e) {
-    console.log('[blog-slug] content dir error:', e)
-  }
   if (!fs.existsSync(filePath)) return null
 
   const raw = fs.readFileSync(filePath, 'utf-8')
@@ -39,8 +31,6 @@ async function getPost(slug: string) {
     html: processed.toString(),
   }
 }
-
-export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   const posts = getMdPosts()
